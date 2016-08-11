@@ -1,18 +1,13 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-
-<body>
+{% extends "base.html" %}
+{% block title %}
+	Amanda and Sean's Wedding Site{
+% endblock %}
+{% block head %}
+	{{ super () }}
+{% endblock %}
+{% block content %}
   <div id="reactEntry"></div>
-
   <!-- Attach React components -->
   <script type="text/javascript" src="{{ url_for('static', filename='bundle.js') }}"></script>
+{% endblock %}  
   
-</body>
-</html>

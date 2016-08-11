@@ -1,26 +1,18 @@
-from flask import Flask, render_template
+import config
+
+from datetime import datetime
+from flask import Flask, session, g, render_template
+
 app = Flask(__name__)
+try:
+	if config.develop:
+		app.config.from_object(config.develop)
+	else:
+		app.config.from_object(config.production)
+except ImportError:
+	 app.config.from_object(config.default)
+		
+from bbmk.views import views
+app.register_blueprint(views)
 
-@app.route('/')
-def index():
-  return render_template('index.html')
-
-@app.route('/registry')
-def wedding_registry():
-  raise NotImplementedError
-
-@app.route('/rsvp')
-def repondez_sil_vous_plait():
-  raise NotImplementedError
-
-@app.route('/photos')
-def photos():
-  raise NotImplementedError
-
-@app.route('/espresso')
-def espresso_machine():
-  raise NotImplementedError
-
-if __name__ == '__main__':
-  app.run(debug=True)
-
+app.run()
