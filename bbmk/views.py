@@ -4,14 +4,13 @@ views = Blueprint('general', __name__)
 
 @views.route('/')
 def index():
-  print 'hello!'
   return render_template('index.html')
 
 @views.route('/registry')
 def wedding_registry():
   raise NotImplementedError
 
-@views.route('/RSVP')
+@views.route('/rsvp')
 def rsvp():
   raise NotImplementedError
 
@@ -19,7 +18,7 @@ def rsvp():
 def photos():
   raise NotImplementedError
 
-@views.route('/espressos')
+@views.route('/espresso')
 def espresso_machine():
   raise NotImplementedError
 

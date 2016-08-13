@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
     {% block head %}
-    <title>{% block title %}{% endblock %}</title>
+    <title>
+    	{% block title %}{% endblock %}
+    </title>
     {% endblock %}
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <div id="content">
+    	{% block content %}
+    	{% endblock %}
+    </div>
     <div id="footer">
         {% block footer %}
-        &copy; Copyright 2016 by<a href="http://bleasebemykennedy.com">you</a>.
+        &copy; Copyright 2016 by <a href="http://www.bleasebemykennedy.com">Sean Kennedy</a>.
         {% endblock %}
     </div>
 </body>
 </html>
+

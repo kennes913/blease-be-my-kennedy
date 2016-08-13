@@ -5,7 +5,7 @@ develop config -- will load first amongst develop, default and production config
 import os
 
 # base directory
-_basedir = os.path.abspath(os.path.dirname(__file__))
+_basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 # Database 
 DATABASE_PATH = os.path.join(_basedir, '/storage/database.db')
