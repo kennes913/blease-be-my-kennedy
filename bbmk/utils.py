@@ -1,26 +1,20 @@
+import bbmk.config
 import os
 
-def load_config(something):
-	raise NotImplementedError
+def load_config():
+	""" Returns config based on presence of various 
+	configuration files. 
 
+	return :: app configuration module 
+	"""
+	try:
+		if bbmk.config.develop:
+			return bbmk.config.develop
+		else:
+			return bbmk.config.production
+	except AttributeError:
+	 	return bbmk.config.default
 
-def create_db_file(name):
-	"""Create a sqlite3 db file.
-	
-	:params name: str, name of database file 
-	"""
-	root = os.path.dirname(os.path.dirname(os.path.abspath(__name__)))
-	file = open(root+'/storage/{}.db'.format(name), 'w')
-	file.close()
-	 
-def delete_db_file(name):
-	"""Delete target sqlite3 db file.
-	
-	:params name: str, name of database file 
-	"""
-	root = os.path.dirname(os.path.dirname(os.path.abspath(__name__)))
-	os.remove(root+'/storage/{}.db'.format(name))
-	
 
 
 
