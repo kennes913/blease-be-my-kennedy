@@ -5,14 +5,18 @@ https://flask-wtf.readthedocs.io/en/latest/quickstart.html#creating-forms
 
 """
 from wtforms import Form
-from wtforms import StringField, SelectField, DateTimeField, IntegerField
-from wtforms.validators import DataRequired
+from wtforms import StringField, RadioField, DateTimeField, IntegerField, SubmitField
+
 
 class RSVPForm(Form):
+	""" Wedding Guest RSVP Form.
 	"""
-	"""
-	name = StringField(u'Name', validators=[DataRequired()])
-	email = StringField(u'Email', validators=[DataRequired()])
-	guests = IntegerField(u'Guests', validators=[DataRequired()])
-	hotel = SelectField(u'Hotel Info', validators=[DataRequired()])
+	hotel_info_choices = [("Yes", "Yes"), ("No", "No")]
+	
+	name = StringField(u'Name')
+	email = StringField(u'Email')
+	guests = IntegerField(u'Guests')
+	hotel_rec = RadioField(u'Hotel Info', choices=hotel_info_choices)
+	submit = SubmitField("RSVP")
+
 

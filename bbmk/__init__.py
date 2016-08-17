@@ -2,7 +2,6 @@
 Initialize App for bleasebemykennedy.com
 
 """
-import database
 import utils 
 
 from datetime import datetime
@@ -16,8 +15,9 @@ app.config.from_object(app_config)
 
 # start and build database
 if app_config.DEBUG:
-	database.build(app_config)
-db = Database(app)	
+	utils.build_database(app_config)
+
+db = Database(app)
 
 @app.errorhandler(404)
 def not_found(error):
@@ -29,13 +29,14 @@ from flask_peewee.admin import Admin
 
 # create admin user if it does not exist
 auth = Auth(app, db)
-database.build_admin_user(auth, 'admin', app_config.SECRET_KEY, app_config.email)
+if app_config.DEBUG:
+	utils.create_admin_user(auth, 'admin', app_config.SECRET_KEY, app_config.email)
 
 # initialize admin portion of site
 admin = Admin(app, auth)
 admin.setup()
 
-# bleasebemykennedy views and models 
+# initialize general views and models 
 from bbmk.views import views
 
 app.register_blueprint(views)

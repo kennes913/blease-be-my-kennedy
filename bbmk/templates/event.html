@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %} 
 <!-- RSVP FORM -->
-<form method="POST" action="{{ url_for('general.rsvp') }}">
+<form method="post" action="{{ url_for('general.rsvp') }}">
     {{ form.csrf_token }}
-    {{ form.name.label }} {{ form.name(size=20) }}
+    {{ form.name.label }}{{ form.name() }}
     </br>
-    {{ form.email.label }} {{ form.email(size=50) }}
+    {{ form.email.label }}{{ form.email() }}
     </br>
-    {{ form.guests.label }} {{ form.guests(size=5) }}
-    <input type="submit" value="RSVP">
+    {{ form.guests.label }} {{ form.guests() }}
+    </br>
+    {{ form.hotel_rec.label }} {{ form.hotel_rec() }}
+    </br>
+    {{ form.submit(size=10) }}
 </form>
 {% endblock %} 
   
