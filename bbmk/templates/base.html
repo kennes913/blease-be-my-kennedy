@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% block head %}
+<!-- Header -->
+<header>
     <title>
-    	{% block title %}{% endblock %}
+        {% block title %}
+        {% endblock %}
     </title>
-    {% endblock %}
-</head>
+</header>
+<!-- Body -->
 <body>
-    <div id="content">
-    	{% block content %}
-    	{% endblock %}
-    </div>
-    <div id="footer">
-        {% block footer %}
+    <!--- Nav -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/story">Our Story</a></li>
+            <li><a href="/rsvp">RSVP</a></li>
+            <li><a href="/registry">Registry</a></li>
+            <li><a href="/photos">Photos</a></li>
+            <li><a href="/espresso">Espresso</a></li>
+        </ul>   
+    </nav>
+    <div id='container'>
+        {% block container %}
         {% endblock %}
     </div>
 </body>
+<!-- Footer -->
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
 </html>
+
+
 

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    SKAB Wedding Homepage
+{% endblock %}
+{% block container %} 
+	<!-- Hello World React Section -->
+	<section id='react'>
+		<div id="reactEntry"></div>
+		<script type="text/javascript" src="{{ url_for('static', filename='bundle.js') }}"></script>
+	</section>
+	<!-- Some other content section -->
+	<section id='other'>
+		Some other content goes here.
+	</section>
+{% endblock %} 
+  
