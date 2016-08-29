@@ -3,21 +3,22 @@
     SKAB RSVP Form 
 {% endblock %}
 {% block container %}
-    {% print errors %}
-    {% if errors != None %}
-        <ul>
-            {% for field in errors %}
-                <li> {{ field }} : {{ errors[field] }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+
+{% if form.errors != 'None' %}
+    <ul class=errors style="list-style-type:none" >
+        {% for error in form.errors %}
+            <li> {{ form.errors[error][0] }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 <section id=form>
     <!-- Rsvp Form -->
-    <form method="post" action="{{ url_for('general.add_guest') }}">
+    <form method="post" action="{{ url_for('general.submit_rsvp') }}">
         {{ form.csrf_token }}
-        {{ form.name.label }}{{ form.name() }}
+        {{ form.name.label }} {{ form.name() }}
         </br>
-        {{ form.email.label }}{{ form.email() }}
+        {{ form.email.label }} {{ form.email() }}
         </br>
         {{ form.guests.label }} {{ form.guests() }}
         </br>

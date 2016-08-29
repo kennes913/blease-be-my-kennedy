@@ -21,11 +21,11 @@ def wedding_registry():
   raise NotImplementedError
 
 @views.route('/rsvp')
-def event(errors=None):
+def event():
 	return render_template('rsvp.html', form=RSVPForm())
 
-@views.route('/add_guest', methods=['POST'])
-def add_guest():
+@views.route('/submit_rsvp', methods=['POST'])
+def submit_rsvp():
 	form = RSVPForm(request.form)
 	submit_time = datetime.strftime(datetime.now(), '%Y-%m-%d T %H:%M:%S')
 	if form.validate():
@@ -38,7 +38,8 @@ def add_guest():
 		new.save()
 		return redirect(url_for('general.success'))
 	else:
-		return redirect(url_for('general.event'))
+		print form.errors
+		return render_template('rsvp.html', form=form)
 
 @views.route('/success', methods=['GET'])
 def success():
