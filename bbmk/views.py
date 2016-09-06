@@ -1,5 +1,6 @@
+import os
 
-from app import db
+from app import db, app_config
 from forms import RSVPForm
 from database import guest
 
@@ -16,9 +17,18 @@ def home():
 def story():
 	return render_template('story.html')
 
+@views.route('/photos')
+def photos():
+  filenames = os.listdir(app_config.STATIC_IMAGES_PATH)
+  return render_template('photos.html', filenames=filenames)
+
+@views.route('/details')
+def details():
+  return render_template('details.html')
+
 @views.route('/registry')
 def wedding_registry():
-  raise NotImplementedError
+	return render_template('registry.html')
 
 @views.route('/rsvp')
 def event():
@@ -38,7 +48,6 @@ def submit_rsvp():
 		new.save()
 		return redirect(url_for('general.success'))
 	else:
-		print form.errors
 		return render_template('rsvp.html', form=form)
 
 @views.route('/success', methods=['GET'])

@@ -7,6 +7,9 @@ import os
 # base directory
 _basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
+# static image files
+STATIC_IMAGES_PATH = os.path.join(_basedir, 'static/images')
+
 # database info
 DATABASE_PATH = os.path.join(_basedir, 'storage/database.db')
 DATABASE_SCHEMA = os.path.join(_basedir, 'storage/database.sql')

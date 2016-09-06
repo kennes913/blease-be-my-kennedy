@@ -15,9 +15,9 @@ class RSVPForm(Form):
 	hotel_info_choices = [("Yes", "Yes"), ("No", "No")]
 	
 	name = StringField(u'Name', validators=[DataRequired(message='We need to know who you are.')])
-	email = StringField(u'What is your email address?')
-	guests = IntegerField(u'How many guests are you bringing?',validators=[DataRequired(message="We need to know if you're bringing guests.")])
-	hotel_rec = SelectField(u'Are you interested in hotel information?', choices=hotel_info_choices)
+	email = StringField(u'What is your email address?', validators=[DataRequired(message="We need an email.")])
+	guests = IntegerField(u'How many guests are you bringing?',validators=[DataRequired(message="We need to know how many guests your're bringing.")])
+	hotel_rec = SelectField(u'Are you interested in hotel information?',choices=hotel_info_choices,validators=[DataRequired(message="Please choose yes or no.")])
 	submit = SubmitField("RSVP")
 
 
