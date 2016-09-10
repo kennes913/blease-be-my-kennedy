@@ -1,0 +1,13 @@
+.navigation {
+	position: fixed;
+	left: 10px;
+ }
+
+ #nav-list {
+ 	list-style-type: none;
+ 	margin-bottom:.25rem;
+ }
+
+
+
+

@@ -1,12 +1,35 @@
-{% extends "base.html" %}
-{% block title %}
-	SKAB Photos
-{% endblock %}
-{% block container %}
-	<h2>Photos</h2>
-	<section id=gallery>
-		{% for name in filenames %}
-			<img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
-		{% endfor %}
-	</section>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Header -->
+	<header>
+		<meta charset="utf-8">
+		<title>
+			SKAB Photos
+		</title>
+		<!-- Mobile Specific Metas
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- FONT
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+		<!-- CSS
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+	</header>
+	    <!-- Body -->
+    <body>
+        <!--- Nav -->
+        <nav>
+            {% include 'navigation.html' %}
+        </nav>
+    	<div class="container">
+			<h2>Photos</h2>
+		<!--<section class="photo-gallery-section">
+			{% for name in filenames %}
+					<img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
+				{% endfor %} 
+			</section>-->
+		</div>
+  </body>
+</html>

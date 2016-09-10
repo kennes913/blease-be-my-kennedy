@@ -11,24 +11,12 @@ views = Blueprint('general', __name__)
 
 @views.route('/')
 def home():
-  return render_template('home.html')
-
-@views.route('/story')
-def story():
-	return render_template('story.html')
+  return render_template('base.html')
 
 @views.route('/photos')
 def photos():
   filenames = os.listdir(app_config.STATIC_IMAGES_PATH)
   return render_template('photos.html', filenames=filenames)
-
-@views.route('/details')
-def details():
-  return render_template('details.html')
-
-@views.route('/registry')
-def wedding_registry():
-	return render_template('registry.html')
 
 @views.route('/rsvp')
 def event():

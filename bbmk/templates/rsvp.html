@@ -1,30 +1,53 @@
-{% extends "base.html" %}
-{% block title %}
-    SKAB RSVP Form 
-{% endblock %}
-{% block container %}
-{% if form.errors != 'None' %}
-    <ul class=errors style="list-style-type:none" >
-        {% for error in form.errors %}
-            <li> {{ form.errors[error][0] }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-<h2>RSVP:</h2>
-<section id=form>
-    <!-- Rsvp Form -->
-    <form method="post" action="{{ url_for('general.submit_rsvp') }}">
-        {{ form.csrf_token }}
-        {{ form.name.label }} {{ form.name() }}
-        </br>
-        {{ form.email.label }} {{ form.email() }}
-        </br>
-        {{ form.guests.label }} {{ form.guests() }}
-        </br>
-        {{ form.hotel_rec.label }} {{ form.hotel_rec() }}
-        </br>
-        {{ form.submit(size=10) }}
-    </form>
-</section>
-{% endblock %} 
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Header -->
+    <header>
+        <meta charset="utf-8">
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- FONT
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    </header>
+    <!-- Body -->
+    <body>
+        <!--- Nav -->
+        <nav>
+            {% include 'navigation.html' %}
+        </nav>
+        {% if form.errors != 'None' %}
+            {% for error in form.errors %}
+                <p class="invalid">
+                    <input value="{{ form.errors[error][0] }}">
+                </p>
+            {% endfor %}
+        {% endif %}
+        <!-- RSVP Form --> 
+        <section class="rsvp-section" id="form">
+        <h1>RSVP</h1>
+            <form method="post" action="{{ url_for('general.submit_rsvp') }}">
+                {{ form.csrf_token }}
+                {{ form.name.label }} {{ form.name(class_="u-half-width") }}                        
+                {{ form.email.label }} {{ form.email(class_="u-half-width") }}
+                {{ form.guests.label }} {{ form.guests(class_="u-half-width") }}
+                {{ form.hotel_rec.label }} {{ form.hotel_rec(class_="u-half-width") }}
+                <br>
+                {{ form.submit(size=10) }}
+            </form>
+        </section>
+    </body>
+    <!-- Footer -->
+    <footer>
+    </footer>
+</html>
+
   
