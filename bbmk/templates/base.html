@@ -4,8 +4,7 @@
     <header>
         <meta charset="utf-8">
         <title>
-            {% block title %}
-            {% endblock %}
+            Welcome from Amanda Blease and Sean Kennedy
         </title>
         <!-- Mobile Specific Metas
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -18,17 +17,26 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-		
+        <!-- JS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/custom.js') }}"></script>   	
-	
 	</header>
-    <!-- Body -->
     <body>
-        <!--- Navigation -->
-        <nav>
-            {% include 'navigation.html' %}
-        </nav>
+        <!-- Navigation
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row" id="navigation">
+            <div class="four columns offset-by-four" id="nav">
+                <a href="#welcome">Welcome</a>
+                <a href="#story">Our Story</a>
+                <a href="#details">Event</a>
+                <a href="#registries">Registry</a>
+                <a href="/photos">Photos</a>
+                <a href="/rsvp">RSVP</a>
+            </div>
+        </div>
+       <!-- Content 
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="container">
             {% include 'home.html' %}
         </div>
@@ -42,9 +50,14 @@
             {% include 'registry.html' %}
         </div>    
     </body>
-    <!-- Footer -->
+    <!-- Footer
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <footer>
-        Sean Kennedy &copy 2016
+        <div class="row">
+            <div class="two columns offset-by-one">
+                Sean Kennedy &copy 2016
+            </div>
+        </div>
     </footer>
 </html>
 

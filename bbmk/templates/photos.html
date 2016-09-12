@@ -4,7 +4,7 @@
 	<header>
 		<meta charset="utf-8">
 		<title>
-			SKAB Photos
+			Photos
 		</title>
 		<!-- Mobile Specific Metas
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -16,20 +16,32 @@
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+        <!-- JS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>   	
 	</header>
-	    <!-- Body -->
     <body>
-        <!--- Nav -->
-        <nav>
-            {% include 'navigation.html' %}
-        </nav>
+       <!-- Navigation
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row" id="navigation">
+            <div class="two columns offset-by-five" id="nav">
+                <a href="/">Welcome</a>
+                <a href="/photos">Photos</a>
+                <a href="/rsvp">RSVP</a>
+            </div>
+        </div>
+      	<!-- Content 
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     	<div class="container">
+    		<br>
 			<h2>Photos</h2>
-		<!--<section class="photo-gallery-section">
-			{% for name in filenames %}
-					<img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
-				{% endfor %} 
-			</section>-->
+			<section class="photo-gallery-section">
+				{% for name in filenames %}
+						<img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
+					{% endfor %} 
+			</section>
 		</div>
   </body>
 </html>

@@ -1,4 +1,32 @@
 <!DOCTYPE html>
-<title>404: It seems you've strayed from the path.</title>
-<h1>404: It seems you've strayed from the path.</h1>
-<p>A careful and diligent search has been made for the desired page, but it cannot be found.</p>
+	<!-- Header -->
+	<header>
+		<meta charset="utf-8">
+		<title>
+			404 Error
+		</title>
+		<!-- Mobile Specific Metas
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- FONT
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+		
+		<!-- CSS
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
+		<!-- JS
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/custom.js') }}"></script>   	
+	</header>
+	<div class="container" style="text-align:center">
+		<title>404: It seems you've strayed from the path.</title>
+		<h1>404: It seems you've strayed from the path.</h1>
+		<p>A careful and diligent search has been made for the desired page, but it cannot be found.</p>
+	</div>
+</html>

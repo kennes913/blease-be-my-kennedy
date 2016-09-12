@@ -1,12 +1,13 @@
-.navigation {
-	position: fixed;
-	left: 10px;
- }
+/* Sticky Navigation */
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-top: 0;
+}
 
- #nav-list {
- 	list-style-type: none;
- 	margin-bottom:.25rem;
- }
 
 
 
