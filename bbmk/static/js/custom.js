@@ -32,3 +32,9 @@ $(document).ready(function() {
   		stickyNav();
 	});
 });
+
+
+// Hide Navigation
+$(document).ready(function() {
+	
+});

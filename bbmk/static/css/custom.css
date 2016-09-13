@@ -1,4 +1,8 @@
-/* Sticky Navigation */
+
+/* --------NAVIGATION ---------*/
+
+/* For Smooth Scrolling */
+
 .sticky {
   position: fixed;
   width: 100%;
@@ -8,7 +12,29 @@
   border-top: 0;
 }
 
+#nav {
+	text-align: center;
+}
 
+#nav a {
+	text-decoration: none;
+	color: #89c0e5;
+}
 
+@media (max-width: 400px) {
+	#nav a {
+		font-size:0.87em;
+	}
+}
 
+@media (min-width: 1200px) {
+	#nav a {
+		font-size:1.5em;
+	}
+}
+
+/*body {
+	background-color: 
+
+}*/
 
