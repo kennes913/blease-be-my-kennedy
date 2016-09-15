@@ -27,9 +27,16 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="row" id="navigation">
             <div class="twelve columns" id="nav">
+            	<img src="{{ url_for('static', filename='images/next.png') }}"/>
                 <a href="/">Welcome</a>
+                &nbsp
+                <img src="{{ url_for('static', filename='images/next.png') }}"/>
                 <a href="/photos">Photos</a>
+                &nbsp
+				<img src="{{ url_for('static', filename='images/next.png') }}"/>
                 <a href="/rsvp">RSVP</a>
+                &nbsp
+				<img src="{{ url_for('static', filename='images/next.png') }}"/>
             </div>
         </div>
       	<!-- Content 
@@ -38,9 +45,9 @@
     		<br>
 			<h2>Photos</h2>
 			<section class="photo-gallery-section">
-				{% for name in filenames %}
+			<!---	{% for name in filenames %}
 						<img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
-					{% endfor %} 
+					{% endfor %} -->
 			</section>
 		</div>
   </body>

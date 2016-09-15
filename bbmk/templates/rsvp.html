@@ -27,8 +27,13 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="row" id="navigation">
             <div class="twelve columns" id="nav">
+                <img src="{{ url_for('static', filename='images/next.png') }}"/>
                 <a href="/">Welcome</a>
+                &nbsp
+                <img src="{{ url_for('static', filename='images/next.png') }}"/>
                 <a href="/photos">Photos</a>
+                &nbsp
+                <img src="{{ url_for('static', filename='images/next.png') }}"/>
                 <a href="/rsvp">RSVP</a>
             </div>
         </div>
@@ -43,7 +48,7 @@
         {% endif %} -->
         <div class="container">
             <br>
-             <div class="ten columns offset-by-three">
+             <div class="twelve columns offset-by-three">
                 <h1>RSVP</h1>
                 <form method="post" id="form" action="{{ url_for('general.submit_rsvp') }}">
                     {{ form.csrf_token }}

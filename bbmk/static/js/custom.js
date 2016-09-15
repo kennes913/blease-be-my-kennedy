@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 	    $('html, body').stop().animate({
 	        'scrollTop': $target.offset().top
-	    }, 800, 'swing', function () {
+	    }, 1000, 'swing', function () {
 	        window.location.hash = target;
 	    });
 	});
@@ -34,7 +34,16 @@ $(document).ready(function() {
 });
 
 
-// Hide Navigation
+// Fading Navbar
+// http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
 $(document).ready(function() {
-	
+	$(window).scroll(function() {
+		var scrollTop = $(this).scrollTop();
+		if (scrollTop > 0) {
+			$('#nav').fadeOut();
+		} else {
+			$('#nav').fadeIn();
+		}
+	});
 });
+
