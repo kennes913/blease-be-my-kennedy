@@ -3,6 +3,8 @@ import bbmk.config
 import os
 import subprocess
 
+from datetime import datetime 
+
 def load_config():
 	""" Returns config based on presence of various 
 	configuration files. 
@@ -68,6 +70,41 @@ def create_admin_user(auth, user, password, email):
 		print 'Admin user {} created. Use secret key from config.'.format(user)
 	except:
 		print 'Attempted Admin creation failed. Admin user already exists.'
+
+
+def process_RSVP_form(model, record):
+	""" This takes in RSVP form data submitted by user and processes
+	for import into database table. 
+
+	:params table: table class, table you want to insert data
+	:params record: dict, form data from users 
+	"""
+	process = record
+	records = []
+
+	process['rsvp_time'] = datetime.strftime(datetime.now(), '%Y-%m-%d T %H:%M:%S')
+	process['guest_type'] = 'invited'	
+
+	for field in record:
+		if 'add_guest' in field:
+			if record[field]:
+				temp = {'name':record[field], 
+						'rsvp_time':record['rsvp_time'],
+						'email':record['email'],
+						'guest_type':'additional'}
+				records.append(temp)
+
+	# in-place delete to use passed record		
+	del record['add_guest_1']
+	del record['add_guest_2']
+	del record['add_guest_3']
+	del record['add_guest_4']
+	del record['add_guest_5']
+	del record['guests']
+
+	records.append(record)
+	model.insert_many(records, validate_fields=True).upsert(True).execute()
+
 
 
 

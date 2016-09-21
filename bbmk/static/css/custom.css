@@ -39,4 +39,14 @@
 		font-size:1.5em;
 	}
 }
-/*---------------------------*/
+
+/* -------- FORM ERRORS ---------*/
+
+#errors {
+
+	color:red;
+	list-style-type:none;
+
+}
+
+

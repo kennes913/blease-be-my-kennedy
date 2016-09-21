@@ -12,12 +12,16 @@ from wtforms import StringField, SelectField, DateTimeField, IntegerField, Submi
 class RSVPForm(Form):
 	""" Wedding Guest RSVP Form.
 	"""
-	hotel_info_choices = [("Yes", "Yes"), ("No", "No")]
-	
-	name = StringField(u'Name', validators=[DataRequired(message='We need to know who you are.')], render_kw={"placeholder":"Enter your full name"})
-	email = StringField(u'What is your email address?', validators=[DataRequired(message="We need an email.")], render_kw={"placeholder":"email@domain.com"})
-	guests = IntegerField(u'How many guests are you bringing?', validators=[DataRequired(message="We need to know how many guests your're bringing.")], render_kw={"placeholder":"# of guests you plan to bring"})
-	hotel_rec = SelectField(u'Are you interested in hotel information?', choices=hotel_info_choices, validators=[DataRequired(message="Please choose yes or no.")])
-	submit = SubmitField("RSVP")
+	hotel_info_choices = [('', ''),('Yes', 'Yes'), ('No', 'No')]
+	additional_guest_choices = [('', ''),('Yes', 'Yes'), ('No', 'No')]
+
+	name = StringField(u'Name', validators=[DataRequired(message='Did you input your name?')], render_kw={"placeholder":"Enter your full name"})
+	email = StringField(u'What is your email address?', validators=[DataRequired(message="Did you input your email?")], render_kw={"placeholder":"email@domain.com"})
+	guests = SelectField(u'Are you bringing additional guests?', choices=additional_guest_choices, validators=[DataRequired(message="Are you bringing guests?")])
+	add_guest_1 = StringField(u'Additional Guest #1', default=None, render_kw={"placeholder":"Enter guest name"})
+	add_guest_2 = StringField(u'Additional Guest #2', default=None, render_kw={"placeholder":"Enter guest name"})
+	add_guest_3 = StringField(u'Additional Guest #3', default=None, render_kw={"placeholder":"Enter guest name"})
+	add_guest_4 = StringField(u'Additional Guest #4', default=None, render_kw={"placeholder":"Enter guest name"})
+	add_guest_5 = StringField(u'Additional Guest #5', default=None, render_kw={"placeholder":"Enter guest name"})
 
 

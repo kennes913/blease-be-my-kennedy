@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 	    $('html, body').stop().animate({
 	        'scrollTop': $target.offset().top
-	    }, 1000, 'swing', function () {
+	    }, 900, 'swing', function () {
 	        window.location.hash = target;
 	    });
 	});
@@ -33,8 +33,8 @@ $(document).ready(function() {
 	});
 });
 
-
 // Fading Navbar
+// A personal variation based on:
 // http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
 $(document).ready(function() {
 	$(window).scroll(function() {
@@ -46,4 +46,38 @@ $(document).ready(function() {
 		}
 	});
 });
+
+// Additional Guest RSVP
+$(document).ready(function() {
+	var guests_counter = 1
+	$("button#add_guest_button.button-primary").hide()
+
+	// Show or hide "Add guest" button based on select value
+	$("select#guests.u-half-width").change(function() {
+		if ($(this).val() == 'Yes') {
+			$("button#add_guest_button.button-primary").show()
+		} else {
+			$("button#add_guest_button.button-primary").hide()
+		}
+	});
+	// Add Guests functionality 
+	$("span#guest_1").hide()
+	$("span#guest_2").hide()
+	$("span#guest_3").hide()
+	$("span#guest_4").hide()
+	$("span#guest_5").hide()
+	$("span#guest_limit").hide()
+	$("button#add_guest_button.button-primary").click(function() {
+		if (guests_counter == 6) {
+			$("span#guest_limit").show()
+		}
+		$("span#guest_"+guests_counter).show();
+		guests_counter += 1
+	});
+});
+
+
+
+
+
 

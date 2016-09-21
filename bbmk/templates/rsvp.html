@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- FONT
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600xs" rel="stylesheet" type="text/css">
         <!-- CSS
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
@@ -27,38 +27,51 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="row" id="navigation">
             <div class="twelve columns" id="nav">
-                <img src="{{ url_for('static', filename='images/next.png') }}"/>
-                <a href="/">Welcome</a>
-                &nbsp
-                <img src="{{ url_for('static', filename='images/next.png') }}"/>
-                <a href="/photos">Photos</a>
-                &nbsp
-                <img src="{{ url_for('static', filename='images/next.png') }}"/>
-                <a href="/rsvp">RSVP</a>
+                <a href="/">Back to Welcome</a>
             </div>
         </div>
         <!-- RSVP Form
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <!--{% if form.errors != 'None' %}
-            {% for error in form.errors %}
-                <p class="invalid">
-                    <input value="{{ form.errors[error][0] }}">
-                </p>
-            {% endfor %}
-        {% endif %} -->
         <div class="container">
             <br>
              <div class="twelve columns offset-by-three">
                 <h1>RSVP</h1>
+                <span id="errors">
+                    {% if errors != None %}
+                        You must fill out your name, email, and the name of your guests.
+                    {% endif %}
+                </span>
+                <br>
+                <br>
                 <form method="post" id="form" action="{{ url_for('general.submit_rsvp') }}">
                     {{ form.csrf_token }}
                     {{ form.name.label }} {{ form.name(class_="u-half-width") }}                        
                     {{ form.email.label }} {{ form.email(class_="u-half-width") }}
-                    {{ form.guests.label }} {{ form.guests(class_="u-half-width") }}
-                    {{ form.hotel_rec.label }} {{ form.hotel_rec(class_="u-half-width") }}
+                    {{ form.guests.label }} {{ form.guests(class_="u-half-width") }} 
+                    <button type="button" class="button-primary" id="add_guest_button">Add Guest</button>
+                    <span id="guest_1">
+                        {{ form.add_guest_1.label }} {{ form.add_guest_1(class_="u-half-width") }}
+                     </span>
+                    <span id="guest_2">
+                        {{ form.add_guest_2.label }} {{ form.add_guest_2(class_="u-half-width") }}
+                    </span>
+                    <span id="guest_3">
+                        {{ form.add_guest_3.label }} {{ form.add_guest_3(class_="u-half-width") }}
+                    </span>
+                    <span id="guest_4">
+                        {{ form.add_guest_4.label }} {{ form.add_guest_4(class_="u-half-width") }}
+                    </span>
+                    <span id="guest_5">
+                        {{ form.add_guest_5.label }} {{ form.add_guest_5(class_="u-half-width") }}
+                    </span>
                     <br>
-                    {{ form.submit(size=10) }}
+                    <span id="guest_limit" style="color:red;">  
+                        <b> You've reached your guest limit! If you need to bring more guests, email amandablease@gmail.com. </b>
+                        <br>
+                    </span>
+                    <button class="button-primary" id="rsvp_button">RSVP</button>
                 </form>
+                
              </div>
         </div>
     </body>

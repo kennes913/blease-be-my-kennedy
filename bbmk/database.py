@@ -16,11 +16,10 @@ class DatabaseModel(db.Model):
 class guest(db.Model):
     """Guest RSVP information 
     """
-    email = CharField(null=True, primary_key=True)
-    guests = IntegerField()
-    hotel_rec = CharField()
-    name = CharField()
     rsvp_time = TextField(null=True)
+    name = CharField(null=True, primary_key=True)
+    email = CharField()
+    guest_type = TextField(null=True)
     
     class Meta:
         db_table = 'guest'
