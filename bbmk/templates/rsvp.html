@@ -39,11 +39,10 @@
                 <span id="errors">
                     {% if errors != None %}
                         You must fill out your name, email, and the name of your guests.
+                        <br>
                     {% endif %}
                 </span>
-                <br>
-                <br>
-                <form method="post" id="form" action="{{ url_for('general.submit_rsvp') }}">
+                <form method="post" id="form" action="{{ url_for('general.rsvp') }}">
                     {{ form.csrf_token }}
                     {{ form.name.label }} {{ form.name(class_="u-half-width") }}                        
                     {{ form.email.label }} {{ form.email(class_="u-half-width") }}

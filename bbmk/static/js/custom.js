@@ -1,3 +1,5 @@
+// Custom JS file
+
 // Smooth Scrolling
 // Found at https://paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
 $(document).ready(function(){
@@ -47,34 +49,44 @@ $(document).ready(function() {
 	});
 });
 
-// Additional Guest RSVP
+// Additional Guest RSVP Functionality
 $(document).ready(function() {
-	var guests_counter = 1
-	$("button#add_guest_button.button-primary").hide()
+
+	// Guest counter
+	var guests = 1
+
+	// Hide-show spans
+	$("span#guest_1").hide();
+	$("span#guest_2").hide();
+	$("span#guest_3").hide();
+	$("span#guest_4").hide();
+	$("span#guest_5").hide();
+	$("span#guest_limit").hide();
+
+	// Add-remove buttons
+	$("button#add_guest_button.button-primary").hide();
+	$("button#reset_button.button-primary").hide();
 
 	// Show or hide "Add guest" button based on select value
 	$("select#guests.u-half-width").change(function() {
 		if ($(this).val() == 'Yes') {
-			$("button#add_guest_button.button-primary").show()
+			$("button#add_guest_button.button-primary").show();
 		} else {
-			$("button#add_guest_button.button-primary").hide()
+			$("button#add_guest_button.button-primary").hide();
 		}
 	});
-	// Add Guests functionality 
-	$("span#guest_1").hide()
-	$("span#guest_2").hide()
-	$("span#guest_3").hide()
-	$("span#guest_4").hide()
-	$("span#guest_5").hide()
-	$("span#guest_limit").hide()
+
+	// Add guest
 	$("button#add_guest_button.button-primary").click(function() {
-		if (guests_counter == 6) {
-			$("span#guest_limit").show()
+		if (guests == 6) {
+			$("span#guest_limit").show();
+		} else {
+			$("span#guest_"+guests).show();
+			guests += 1;
 		}
-		$("span#guest_"+guests_counter).show();
-		guests_counter += 1
 	});
 });
+
 
 
 

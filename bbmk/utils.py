@@ -50,8 +50,6 @@ def build_database(config):
 		db_file, schema_file = config.DATABASE_PATH, config.DATABASE_SCHEMA 
 		subprocess.call("sqlite3 {} < {}".format(db_file, schema_file), shell=True)
 		print 'Created database file.'
-	else:
-		print 'Attempted database creation failed. Database already exists.'
 
 def create_admin_user(auth, user, password, email):
 	""" Create a user auth table if one does not exists. Then create
@@ -69,7 +67,7 @@ def create_admin_user(auth, user, password, email):
 		admin.save()
 		print 'Admin user {} created. Use secret key from config.'.format(user)
 	except:
-		print 'Attempted Admin creation failed. Admin user already exists.'
+		print 'Admin user exists.'
 
 
 def process_RSVP_form(model, record):
@@ -93,8 +91,7 @@ def process_RSVP_form(model, record):
 						'email':record['email'],
 						'guest_type':'additional'}
 				records.append(temp)
-
-	# in-place delete to use passed record		
+		
 	del record['add_guest_1']
 	del record['add_guest_2']
 	del record['add_guest_3']
