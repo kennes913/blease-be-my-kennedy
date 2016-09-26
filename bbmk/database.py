@@ -20,6 +20,8 @@ class guest(db.Model):
     name = CharField(null=True, primary_key=True)
     email = CharField()
     guest_type = TextField(null=True)
+    ceremony = TextField(null=True)
+    reception = TextField(null=True)
     
     class Meta:
         db_table = 'guest'

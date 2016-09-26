@@ -1,82 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-    <!-- Header -->
-    <header>
-        <meta charset="utf-8">
-        <title>
-            RSVP
-        </title>
-        <!-- Mobile Specific Metas
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- FONT
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600xs" rel="stylesheet" type="text/css">
-        <!-- CSS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-        <!-- JS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>    
-    </header>
-    <body>
-        <!-- Navigation
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="row" id="navigation">
-            <div class="twelve columns" id="nav">
-                <a href="/">Back to Welcome</a>
-            </div>
-        </div>
-        <!-- RSVP Form
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="container">
-            <br>
-             <div class="twelve columns offset-by-three">
-                <h1>RSVP</h1>
-                <span id="errors">
-                    {% if errors != None %}
-                        You must fill out your name, email, and the name of your guests.
-                        <br>
-                    {% endif %}
-                </span>
+{% extends "base.html" %}
+{% block title %}
+    RSVP
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="twelve columns offset-by-three">
+        <h1><b>RSVP</b></h1>
+            <span id="errors">
+                {% if errors != None %}
+                    You must fill out your name, email, the name of your guests<br>
+                    and the event(s) you're attending.
+                {% endif %}
+            </span>
                 <form method="post" id="form" action="{{ url_for('general.rsvp') }}">
                     {{ form.csrf_token }}
                     {{ form.name.label }} {{ form.name(class_="u-half-width") }}                        
                     {{ form.email.label }} {{ form.email(class_="u-half-width") }}
+                    {{ form.events.label }} {{ form.events(class_="u-half-width") }}
                     {{ form.guests.label }} {{ form.guests(class_="u-half-width") }} 
-                    <button type="button" class="button-primary" id="add_guest_button">Add Guest</button>
-                    <span id="guest_1">
-                        {{ form.add_guest_1.label }} {{ form.add_guest_1(class_="u-half-width") }}
-                     </span>
-                    <span id="guest_2">
-                        {{ form.add_guest_2.label }} {{ form.add_guest_2(class_="u-half-width") }}
-                    </span>
-                    <span id="guest_3">
-                        {{ form.add_guest_3.label }} {{ form.add_guest_3(class_="u-half-width") }}
-                    </span>
-                    <span id="guest_4">
-                        {{ form.add_guest_4.label }} {{ form.add_guest_4(class_="u-half-width") }}
-                    </span>
-                    <span id="guest_5">
-                        {{ form.add_guest_5.label }} {{ form.add_guest_5(class_="u-half-width") }}
-                    </span>
-                    <br>
-                    <span id="guest_limit" style="color:red;">  
-                        <b> You've reached your guest limit! If you need to bring more guests, email amandablease@gmail.com. </b>
-                        <br>
-                    </span>
-                    <button class="button-primary" id="rsvp_button">RSVP</button>
-                </form>
-                
-             </div>
+                <button type="button" class="button-primary" id="add_guest_button">Add Guest</button>
+                <span id="guest_1">
+                    {{ form.add_guest_1.label }} {{ form.add_guest_1(class_="u-half-width") }}
+                </span>
+                <span id="guest_2">
+                    {{ form.add_guest_2.label }} {{ form.add_guest_2(class_="u-half-width") }}
+                </span>
+                <span id="guest_3">
+                    {{ form.add_guest_3.label }} {{ form.add_guest_3(class_="u-half-width") }}
+                </span>
+                <span id="guest_4">
+                    {{ form.add_guest_4.label }} {{ form.add_guest_4(class_="u-half-width") }}
+                </span>
+                <span id="guest_5">
+                    {{ form.add_guest_5.label }} {{ form.add_guest_5(class_="u-half-width") }}
+                </span>
+                <br>
+                <span id="guest_limit" style="color:red;">  
+                    <b>You've reached your guest limit. Email amandablease@gmail.com.</b>
+                <br>
+                </span>
+                <button class="button-primary" id="rsvp_button">RSVP</button>
+            </form>
         </div>
-    </body>
-    <!-- Footer -->
-    <footer>
-    </footer>
-</html>
+    </div>
+{% endblock %}
+
 
   

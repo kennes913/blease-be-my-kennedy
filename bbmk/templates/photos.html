@@ -1,48 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-	<!-- Header -->
-	<header>
-		<meta charset="utf-8">
-		<title>
-			Photos
-		</title>
-		<!-- Mobile Specific Metas
-		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- FONT
-		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-		<!-- CSS
-		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-        <!-- JS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>   	
-	</header>
-    <body>
-       <!-- Navigation
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="row" id="navigation">
-            <div class="twelve columns" id="nav">
-                <a href="/">Welcome</a>
-                &nbsp
-                <a href="/rsvp">RSVP</a>
-                &nbsp
-            </div>
-        </div>
-      	<!-- Content 
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    	<div class="container">
-    		<br>
-			<h2>Photos</h2>
-			<section class="photo-gallery-section">
-			<!---	{% for name in filenames %}
-						<img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
-					{% endfor %} -->
-			</section>
-		</div>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+    Amanda and Sean Photos
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <br>
+        <h1><b>Photos</b></h1>
+        ADD CONTENT HERE
+        <!---{% for name in filenames %}
+        <img src="{{ url_for('static', filename='images/{}'.format(name)) }}" height="100" width="100" />
+        {% endfor %} -->
+    </div>
+{% endblock %}

@@ -7,13 +7,31 @@ from database import guest
 from flask import (Flask, render_template, Blueprint, 
 	request, redirect, url_for)
 
-
 views = Blueprint('general', __name__)
 
 
 @views.route('/')
 def home():
-  return render_template('base.html')
+  return render_template('home.html')
+
+
+@views.route('/registry')
+def registry():
+	return render_template('registry.html')
+
+
+@views.route('/ceremony')
+def ceremony():
+	return render_template('ceremony.html')
+
+
+@views.route('/reception')
+def reception():
+	return render_template('reception.html')
+
+@views.route('/story')
+def story():
+	return render_template('story.html')
 
 
 @views.route('/photos')
@@ -34,7 +52,7 @@ def rsvp():
 			utils.process_RSVP_form(guest, form.data) 
 			return redirect(url_for('general.success'))
 		else:
-			return render_template('rsvp.html', form=form, errors=form.errors)
+			return render_template('rsvp.html', form=RSVPForm(), errors=form.errors)
 
 
 @views.route('/success')
@@ -43,12 +61,6 @@ def success():
 		return render_template('success.html')
 	else:
 		return render_template('404.html')
-
-
-	
-
-
-
 
 
 

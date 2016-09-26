@@ -1,63 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Header -->
-    <header>
-        <meta charset="utf-8">
-        <title>
-            Welcome from Amanda Blease and Sean Kennedy
-        </title>
-        <!-- Mobile Specific Metas
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- FONT
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-        <!-- CSS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+	<!-- Header -->
+	<header>
+		<meta charset="utf-8">
+		<title>
+            {% block title %}
+            {% endblock %}
+		</title>
+		<!-- Mobile Specific Metas
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- FONT
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+		<!-- CSS
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
         <!-- JS
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+     
 		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>   	
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.fullPage.js') }}"></script>  
 	</header>
     <body>
-        <!-- Navigation
+       <!-- Navigation
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="row" id="navigation">
             <div class="twelve columns" id="nav">
-                <a href="#welcome">Welcome</a>
+                <a href="/">Welcome</a>
                 &nbsp
-                <a href="#story">Our Story</a>
+                <a href="/story">Our Story</a>
                 &nbsp
-                <a href="#details">Event</a>
+                <a href="/ceremony">Ceremony</a>
                 &nbsp
-                <a href="#registry">Registry</a>
+                <a href="/reception">Reception</a>
+                &nbsp
+                <a href="/registry">Registry</a>
                 &nbsp
                 <a href="/rsvp">RSVP</a>
             </div>
         </div>
-       <!-- Content 
+      	<!-- Content 
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="container">
-            {% include 'home.html' %}
-        </div>
-        <div class="container">
-            {% include 'story.html' %}
-        </div> 
-        <div class="container">
-            {% include 'details.html' %}
-        </div>
-        <div class="container">
-            {% include 'registry.html' %}
-        </div>    
-    </body>
-    <!-- Footer
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <footer>
-    </footer>
+       {% block content %}
+       {% endblock %}
+  </body>
+  <!-- Footer
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <footer>
+  </footer>
 </html>
-
-
-

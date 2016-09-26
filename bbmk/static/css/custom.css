@@ -24,8 +24,13 @@
 
 @media (max-width: 400px) {
 	#nav a {
-		font-size:0.87em;
+		font-size:0.7em;
 	}
+    .home_header > h1 {
+
+    font-weight:bold;
+    font-size:4em;
+    }
 }
 
 @media (min-width: 400px) {
@@ -47,6 +52,14 @@
 	color:red;
 	list-style-type:none;
 
+}
+
+/* -------- FORM ERRORS ---------*/
+
+.home_header > h1 {
+
+    font-weight:bold;
+    font-size:6em;
 }
 
 

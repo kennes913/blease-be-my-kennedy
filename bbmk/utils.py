@@ -77,11 +77,20 @@ def process_RSVP_form(model, record):
 	:params table: table class, table you want to insert data
 	:params record: dict, form data from users 
 	"""
-	process = record
 	records = []
 
-	process['rsvp_time'] = datetime.strftime(datetime.now(), '%Y-%m-%d T %H:%M:%S')
-	process['guest_type'] = 'invited'	
+	record['rsvp_time'] = datetime.strftime(datetime.now(), '%Y-%m-%d T %H:%M:%S')
+	record['guest_type'] = 'invited'
+
+	if record['events'] == 'Both':
+			record['ceremony'] = 'Yes'
+			record['reception'] = 'Yes'
+	if record['events'] == 'Ceremony':
+			record['ceremony'] = 'Yes'
+			record['reception'] = 'No'
+	if record['events'] == 'Reception':
+			record['ceremony'] = 'No'
+			record['reception'] = 'Yes'
 
 	for field in record:
 		if 'add_guest' in field:
@@ -89,17 +98,21 @@ def process_RSVP_form(model, record):
 				temp = {'name':record[field], 
 						'rsvp_time':record['rsvp_time'],
 						'email':record['email'],
-						'guest_type':'additional'}
+						'guest_type':'additional',
+						'ceremony':record['ceremony'],
+						'reception':record['reception']}
 				records.append(temp)
-		
+
 	del record['add_guest_1']
 	del record['add_guest_2']
 	del record['add_guest_3']
 	del record['add_guest_4']
 	del record['add_guest_5']
 	del record['guests']
+	del record['events']
 
 	records.append(record)
+	print(records)
 	model.insert_many(records, validate_fields=True).upsert(True).execute()
 
 
