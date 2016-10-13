@@ -81,6 +81,7 @@ def process_RSVP_form(model, record):
 
 	:params table: table class, table you want to insert data
 	:params record: dict, form data from users 
+	
 	"""
 	records = []
 	

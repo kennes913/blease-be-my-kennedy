@@ -59,29 +59,6 @@ def success():
 	else:
 		return render_template('404.html')
 
-def allowed_file(filename):
-	""" Function that determines whether or not the
-	file is allowed to be uploaded.
-	
-	Written by Armin Ronacher:
-	http://flask.pocoo.org/docs/0.11/patterns/fileuploads/
-
-	:params filename: str, name of file being uploaded
-
-	return :: bool
-	"""
-	return '.' in filename and \
-		filename.rsplit('.', 1)[1] in app_config.ALLOWED_EXTENSIONS
-
-def parse_uploaded_guest_list(worksheet):
-	"""
-	"""
-	store = []
-	for row in worksheet.rows:
-		for cell in row:
-			if cell.value.lower() not in ['name', 'guest']:
-				store.append(dict(name=cell.value.lower()))
-	return store 
 	
 @views.route('/manage', methods=['GET', 'POST'])
 @basic_auth.required
