@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Header -->
+    <header>
+        <meta charset="utf-8">
+        <title>
+                {% block title %}
+                {% endblock %}
+        </title>
+        <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- FONT
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+            <!-- JS
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+         
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    </header>
+    <body id="admin">
+    <!-- Navigation
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row" id="navigation">
+            <div class="twelve columns" id="nav">
+                <a href="/">Back to Site</a>
+            </div>
+        </div>
+        <!-- Content 
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="container">
+            <h1><b>Manage Wedding</b></h1>
+            <br>
+            <div class="row">
+                <div class="twelve columns">
+                   <h4><b>Upload Guest List:</b></h4>
+                    <form method="post" enctype=multipart/form-data action="{{ url_for('general.manage') }}">
+                        {{ form.csrf_token }} 
+                        {{ form.guests }}                        
+                        <button class="button-primary">Upload File</button>
+                    </form>
+                </div>
+                </div>
+                <br>
+                <div class="row">
+                <h4><b>Responded Guests:</b></h4>
+                <div class="twelve columns" id='current_guests'>
+                    
+                    <table class="u-full-width">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>RSVP Time</th>
+                                <th>Email</th>
+                                <th>Ceremony</th>
+                                <th>Reception</th>
+                                <th>Guest Type</th>
+                            </tr>
+                        </thead>
+                        {% for guest in guests %}
+                            <tr>
+                                <th>{{ guest['name'] }}</th> 
+                                <th>{{ guest['rsvp_time'] }}</th> 
+                                <th>{{ guest['email'] }}</th> 
+                                <th>{{ guest['ceremony'] }}</th>
+                                <th>{{ guest['reception'] }}</th>
+                                <th>{{ guest['guest_type'] }}</th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                 </div>
+              </div>
+            </div>
+    </body>
+  <!-- Footer
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <footer>
+    </footer>
+</html>
+
+
+
+
+
+

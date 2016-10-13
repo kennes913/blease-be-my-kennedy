@@ -38,5 +38,13 @@ class user(db.Model):
     class Meta:
         db_table = 'user'
 
+class expected(db.Model):
+    """Names of guests on guest list
+    """
+    name = CharField(null=True, primary_key=True)
+
+    class Meta:
+        db_table = 'expected'
+
 
 

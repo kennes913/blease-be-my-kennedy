@@ -19,7 +19,7 @@
 
 #nav a {
 	text-decoration: none;
-	color:#33c3f0;
+	color:;
 }
 
 @media (max-width: 400px) {
@@ -27,9 +27,8 @@
 		font-size:0.7em;
 	}
     .home_header > h1 {
-
-    font-weight:bold;
-    font-size:4em;
+      font-weight:bold;
+      font-size:4em;
     }
 }
 
@@ -53,6 +52,10 @@
     font-size:6em;
 }
 
+#welcome {
+    background-size:cover;
+}
+
 /* -------- CEREMONY & RECEPTION ---------*/
 
 .subheader {
@@ -70,7 +73,7 @@
 
 }
 
-/* -------- FORM ERRORS ---------*/
+/* -------- REGISTRY ---------*/
 
 #registry.container {
 
@@ -79,6 +82,14 @@
 
 }
 
+/* -------- REGISTRY ---------*/
+
+#current_guests.twelve.columns {
+
+  width:100%;
+  overflow-y: auto;
+  height:400px;
+}
 
 
 

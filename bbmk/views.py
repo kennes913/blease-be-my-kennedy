@@ -1,8 +1,11 @@
 import os
+import csv 
+import openpyxl
 
-from app import db, app_config, utils
-from forms import RSVPForm
-from database import guest
+from app import db, app_config, utils, basic_auth
+from werkzeug.utils import secure_filename
+from forms import RSVPForm, FileUploadForm
+from database import guest, expected
 
 from flask import (Flask, render_template, Blueprint, 
 	request, redirect, url_for)
@@ -29,15 +32,10 @@ def ceremony():
 def reception():
 	return render_template('reception.html')
 
+
 @views.route('/story')
 def story():
 	return render_template('story.html')
-
-
-@views.route('/photos')
-def photos():
-  filenames = os.listdir(app_config.STATIC_IMAGES_PATH)
-  return render_template('photos.html', filenames=filenames)
 
 
 @views.route('/rsvp', methods=['GET', 'POST'])
@@ -54,13 +52,63 @@ def rsvp():
 		else:
 			return render_template('rsvp.html', form=RSVPForm(), errors=form.errors)
 
-
 @views.route('/success')
 def success():
 	if request.referrer:
 		return render_template('success.html')
 	else:
 		return render_template('404.html')
+
+def allowed_file(filename):
+	""" Function that determines whether or not the
+	file is allowed to be uploaded.
+	
+	Written by Armin Ronacher:
+	http://flask.pocoo.org/docs/0.11/patterns/fileuploads/
+
+	:params filename: str, name of file being uploaded
+
+	return :: bool
+	"""
+	return '.' in filename and \
+		filename.rsplit('.', 1)[1] in app_config.ALLOWED_EXTENSIONS
+
+def parse_uploaded_guest_list(worksheet):
+	"""
+	"""
+	store = []
+	for row in worksheet.rows:
+		for cell in row:
+			if cell.value.lower() not in ['name', 'guest']:
+				store.append(dict(name=cell.value.lower()))
+	return store 
+	
+@views.route('/manage', methods=['GET', 'POST'])
+@basic_auth.required
+def manage():
+	if request.method == 'POST':	
+		if not request.files:
+			return redirect(request.url)
+		file = request.files.items()[0][1]
+		if file.filename == '':
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			if 'csv' in file.filename:
+				expected_guests = utils.csv_guests_to_list(file.stream)
+			if 'xlsx' in file.filename: 
+				expected_guests = utils.xls_guests_to_list(file.stream)
+			with db.database.atomic():
+				db.database.truncate_table(expected)
+				expected.insert_many(expected_guests).upsert(True).execute()
+			return redirect(url_for('general.manage', filename=file.filename))
+	if request.method == 'GET':
+		db.connect_db()
+		current_guests = [rsvped_guest._data for rsvped_guest in guest.select()]
+		return render_template('manage.html', form=FileUploadForm(), guests=current_guests)
+
+
+
 
 
 

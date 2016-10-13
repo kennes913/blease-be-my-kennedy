@@ -1,11 +1,13 @@
 """
-Initialize App for bleasebemykennedy.com
-
+Main App for bleasemekennedy.com
 """
 import utils
 
+import flask_peewee.db
+
 from datetime import datetime
 from flask import Flask, session, g, render_template
+from flask_basicauth  import BasicAuth
 
 app_config = utils.load_config()
 app = Flask(__name__)
@@ -24,20 +26,12 @@ def close_db(exception):
 def not_found(error):
     return render_template('404.html')
 
-# flask peewee ORM dependencies
-from flask_peewee.db import Database
-from flask_peewee.auth import Auth
-from flask_peewee.admin import Admin
+# Basic Auth for protected pages
+basic_auth = BasicAuth(app)
 
-db = Database(app)
-auth = Auth(app, db)
-
-if app_config.DEBUG:
-	utils.create_admin_user(auth, 'admin', app_config.SECRET_KEY, app_config.email)
-
-# initialize admin portion of site
-admin = Admin(app, auth)
-admin.setup()
+# Flask Peewee ORM dependency
+# http://docs.peewee-orm.com/projects/flask-peewee/en/latest/database.html
+db = flask_peewee.db.Database(app)
 
 # initialize general views and models 
 from bbmk.views import views

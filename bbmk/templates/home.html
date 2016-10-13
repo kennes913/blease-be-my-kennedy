@@ -1,8 +1,49 @@
-{% extends "base.html" %}
-{% block title %}
-    Welcome
-{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Header -->
+  <header>
+    <meta charset="utf-8">
+    <title>
+            {% block title %}
+            {% endblock %}
+    </title>
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+        <!-- JS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+     
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+  </header>
+    <body id="welcome" style="background-image:url('{{ url_for('static', filename='images/home_photo.png') }}');">
+       <!-- Navigation
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row" id="navigation">
+            <div class="twelve columns" id="nav">
+                <a href="/">Welcome</a>
+                &nbsp
+                <a href="/story">Our Story</a>
+                &nbsp
+                <a href="/ceremony">Ceremony</a>
+                &nbsp
+                <a href="/reception">Reception</a>
+                &nbsp
+                <a href="/registry">Registry</a>
+                &nbsp
+                <a href="/rsvp">RSVP</a>
+            </div>
+        </div>
+        <!-- Content 
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <br>
     <br>
@@ -18,7 +59,14 @@
         </span>
     </div>
   </div>
-{% endblock%}
+  </body>
+  <!-- Footer
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <footer>
+    </footer>
+</html>
+
+
 
 
 
