@@ -1,5 +1,5 @@
 """
-develop configuration -- for testing purposes
+base production -- this should change once you push to production server
 """
 import os
 
@@ -25,7 +25,6 @@ BASIC_AUTH_PASSWORD = ''
 # upload file
 UPLOAD_FOLDER = os.path.join(_basedir, 'processing')
 ALLOWED_EXTENSIONS = set(['txt', 'xlsx', 'csv'])
-
 
 # config info 
 _config_info = {'root':_basedir,

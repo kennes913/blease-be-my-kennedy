@@ -15,11 +15,15 @@
 
 #nav {
 	text-align: center;
+  
 }
 
 #nav a {
+
 	text-decoration: none;
-	color:;
+  color:#50C878;
+  font-weight:bold;
+
 }
 
 @media (max-width: 400px) {
@@ -82,7 +86,7 @@
 
 }
 
-/* -------- REGISTRY ---------*/
+/* -------- MANAGE ---------*/
 
 #current_guests.twelve.columns {
 

@@ -1,7 +1,6 @@
-
 import app
 
-# For testing 
+# This is for cli control of database and testing.
 if not app.app_config.DEBUG:
-    del app 
+    del app
     

@@ -1,1 +1,6 @@
-import develop, default
+try:
+    import production, default, develop
+except ImportError:
+    import default, develop
+except ImportError:
+    import develop

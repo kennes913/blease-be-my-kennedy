@@ -13,6 +13,8 @@
 		<!-- FONT
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:800|Exo+2:800" rel="stylesheet">
+
 		<!-- CSS
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
@@ -24,22 +26,32 @@
 		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 	</header>
-    <body>
+    <body style="background-image:url('{{ url_for('static', filename='images/concrete_2.png') }}');">
        <!-- Navigation
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="row" id="navigation">
             <div class="twelve columns" id="nav">
-                <a href="/">Welcome</a>
-                &nbsp
-                <a href="/story">Our Story</a>
-                &nbsp
-                <a href="/ceremony">Ceremony</a>
-                &nbsp
-                <a href="/reception">Reception</a>
-                &nbsp
-                <a href="/registry">Registry</a>
-                &nbsp
-                <a href="/rsvp">RSVP</a>
+              <a href="/">Welcome</a>
+              &nbsp
+              <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+              &nbsp
+              <a href="/story">Our Story</a>
+              &nbsp
+              <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+              &nbsp
+              <a href="/ceremony">Ceremony</a>
+              &nbsp
+              <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+              &nbsp
+              <a href="/reception">Reception</a>
+              &nbsp
+              <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+              &nbsp
+              <a href="/registry">Registry</a>
+              &nbsp
+              <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+              &nbsp
+              <a href="/rsvp">RSVP</a>
             </div>
         </div>
       	<!-- Content 

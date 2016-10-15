@@ -4,8 +4,7 @@
   <header>
     <meta charset="utf-8">
     <title>
-            {% block title %}
-            {% endblock %}
+        Amanda and Sean's Wedding Site
     </title>
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -13,6 +12,7 @@
     <!-- FONT
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:800|Exo+2:800" rel="stylesheet" type="text/css">
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
@@ -31,13 +31,28 @@
             <div class="twelve columns" id="nav">
                 <a href="/">Welcome</a>
                 &nbsp
+                &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                &nbsp
                 <a href="/story">Our Story</a>
+                &nbsp
+                &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
                 &nbsp
                 <a href="/ceremony">Ceremony</a>
                 &nbsp
+                &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                &nbsp
                 <a href="/reception">Reception</a>
                 &nbsp
+                &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                &nbsp
                 <a href="/registry">Registry</a>
+                &nbsp
+                &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
                 &nbsp
                 <a href="/rsvp">RSVP</a>
             </div>
@@ -59,11 +74,23 @@
         </span>
     </div>
   </div>
+  </div
   </body>
   <!-- Footer
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <footer>
-    </footer>
+    <div class="row">
+        <div class="twelve columns">
+            <footer>
+                 &nbsp 
+                 &nbsp 
+                 &nbsp
+                 &nbsp
+                 &nbsp
+                 &copy 2016 Sean Kennedy
+            </footer>
+        </div>
+    </div>
+    
 </html>
 
 

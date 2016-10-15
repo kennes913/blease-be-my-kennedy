@@ -4,23 +4,24 @@
 {% endblock %}
 {% block content %}
   <div class="container" id="reception">
-        <br>
         <h1><b>Reception</b></h1>
         <div class="row">
             <div class="six columns">
                 <span class="subheader">Where:</span>
-                <p>Palm Door on Sabine, 401 Sabine Street</p>
+                <a href="https://www.google.com/maps/place/Palm+Door+on+Sabine/@30.2645352,-97.7387148,17z/data=!3m1!4b1!4m5!3m4!1s0x8644b5a8af23f395:0x2090a151414de094!8m2!3d30.2645306!4d-97.7365261">
+                    <p>Palm Door on Sabine, 401 Sabine Street</p>
+                </a>a>
                 <span class="subheader">When:</span>
-                <p> February 10, 2016 5:30-11:00 P.M.</p>
+                <p> February 10, 2016 5:00-11:00 P.M.</p>
                 <span class="subheader">Details:</span>
-                <p> Eats, drinks (traditional Spanish food) and music!</p>
+                <p> Paella, tapas, pintxos, drinks and groovy tunes!</p>
                 <span class="subheader">Parking:</span>
                 <p>
-                    <b>Street parking only</b>; As downtown Austin parking is notoriously difficult, we recommend either taking a rideshare service from your hotel to and from the reception, parking at the Convention Center (rates are about $10-$15 for 6-7 hours), which is just a couple blocks away. You can always scour the block for street parking; however, there are often three-hour limits on street parking.
+                    Downtown Austin parking is notoriously difficult. We recommend either taking a rideshare service from your hotel to and from the reception or parking at the Convention Center (rates are about $10-$15 for 6-7 hours), which is just a couple blocks away. If you're willing to put in the effort, you can always scour the block for street parking; however, there are often three-hour limits on street parking.
                 </p>
             </div>
-            <div class="six columns">
-                <img src="{{ url_for('static', filename='images/palm_door_reception.jpg') }}" width="580" height="386"/>
+            <div class="six columns" id='reception'>
+                <img src="{{ url_for('static', filename='images/pd_sabine.jpg') }}" width="580" height="386"/>
             </div>
         </div>
     </div>

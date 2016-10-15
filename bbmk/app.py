@@ -14,8 +14,7 @@ app = Flask(__name__)
 app.config.from_object(app_config)
 
 # start and build database
-if app_config.DEBUG:
-	utils.build_database(app_config)
+utils.build_database(app_config)
 
 @app.teardown_request
 def close_db(exception):
