@@ -7,7 +7,7 @@ import flask_peewee.db
 
 from datetime import datetime
 from flask import Flask, session, g, render_template
-from flask_basicauth  import BasicAuth
+from flask_basicauth import BasicAuth
 
 app_config = utils.load_config()
 app = Flask(__name__)

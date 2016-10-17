@@ -33,8 +33,8 @@ class RSVPForm(Form):
 
 	name = StringField(u'Name', validators=[InputRequired(), Bouncer()], render_kw={"placeholder":"First Name and Last Name"})
 	email = StringField(u'What is your email address?', validators=[DataRequired(message="Did you input your email?")], render_kw={"placeholder":"email@domain.com"})
-	guests = SelectField(u'Are you bringing additional guests?', choices=additional_guest_choices, validators=[DataRequired(message="Are you bringing guests?")])
-	events = SelectField(u'What event(s) are you attending?', choices=event_choices, validators=[DataRequired(message="What are you attending??")])
+	guests = SelectField(u'Are you bringing guests?', choices=additional_guest_choices, validators=[DataRequired(message="Are you bringing guests?")])
+	events = SelectField(u'What event(s) are you attending?', choices=event_choices, validators=[DataRequired(message="Please choose your events.")])
 	add_guest_1 = StringField(u'Additional Guest #1', default=None, render_kw={"placeholder":"Enter guest name"})
 	add_guest_2 = StringField(u'Additional Guest #2', default=None, render_kw={"placeholder":"Enter guest name"})
 	add_guest_3 = StringField(u'Additional Guest #3', default=None, render_kw={"placeholder":"Enter guest name"})

@@ -72,7 +72,15 @@ $(document).ready(function() {
 		if ($(this).val() == 'Yes') {
 			$("button#add_guest_button.button-primary").show();
 		} else {
+			// struggled with this for a few moments
+			guests = 1; 
 			$("button#add_guest_button.button-primary").hide();
+			$("span#guest_1").hide();
+			$("span#guest_2").hide();
+			$("span#guest_3").hide();
+			$("span#guest_4").hide();
+			$("span#guest_5").hide();
+			$("span#guest_limit").hide();
 		}
 	});
 
