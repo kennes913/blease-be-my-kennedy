@@ -1,55 +1,30 @@
-// Custom JS file
+// Ad hoc functionality
+// By: Sean Kennedy
 
-// Smooth Scrolling
-// Found at https://paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
-$(document).ready(function(){
-	$('a[href^="#"]').on('click',function (e) {
-	    e.preventDefault();
+/* Fading Navbar:
+	Code found here:
+	http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
+*/
 
-	    var target = this.hash;
-	    var $target = $(target);
-
-	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top
-	    }, 900, 'swing', function () {
-	        window.location.hash = target;
-	    });
-	});
-});
-
-// Sticky Navigation
-// Found at http://www.hongkiat.com/blog/css-sticky-position/
 $(document).ready(function() {
-	var nav = $('#nav').offset().top;
-	var stickyNav = function(){
-		var scrollTop = $(window).scrollTop();  
-		if (scrollTop > nav) { 
-    		$('#nav').addClass('sticky');
-		} else {
-    		$('#nav').removeClass('sticky'); 
-		}
-	};
-	stickyNav();
-	$(window).scroll(function() {
-  		stickyNav();
-	});
+	var width = $(window).width();
+	if (width > 450) {
+		$(window).scroll(function() {
+			var scrollTop = $(this).scrollTop();
+			if (scrollTop > 0) {
+				$('#nav').fadeOut();
+				$('#home-nav').fadeOut();
+			} else {
+				$('#nav').fadeIn();
+				$('#home-nav').fadeIn();
+			}
+		});
+	}; 
 });
 
-// Fading Navbar
-// A personal variation based on:
-// http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
-$(document).ready(function() {
-	$(window).scroll(function() {
-		var scrollTop = $(this).scrollTop();
-		if (scrollTop > 0) {
-			$('#nav').fadeOut();
-		} else {
-			$('#nav').fadeIn();
-		}
-	});
-});
 
-// Additional Guest RSVP Functionality
+// RSVP Form Add Guest Functionality
+
 $(document).ready(function() {
 
 	// Guest counter
@@ -94,6 +69,86 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+/* 
+ Navigation dropdown mobile device menu:
+ 	HTML/CSS can be found at https://codepen.io/RRoberts/pen/OXxkzm
+*/
+
+$(document).ready(function() {
+	$(".mobile-two .menu-toggle").click(function() {
+		$(this).parent().next(".mobile-nav").toggle(0 , "display");
+	});
+});
+
+
+// Remove photos based on media query size (This can be done with css instead!)
+
+$(document).ready(function(){
+	var reception_photo = $("div.six:nth-child(2) > img:nth-child(1)")
+	var ceremony_photo = $(".four > img:nth-child(1)")
+	var width = $(window).width();
+	if (width < 600){
+		reception_photo.hide();
+		ceremony_photo.hide();
+	} else {
+		reception_photo.show();
+		ceremony_photo.show();
+	};
+
+});
+
+
+//Remove homepage background image. 
+
+$(document).ready(function(){
+	var welcome  = $("#welcome");
+	var announce  = $(".home_header > h1:nth-child(1)");
+	var footer  = $("footer");
+	var width = $(window).width();
+	if (width < 1025){
+		welcome.css("background-image", "none");
+		announce.css("color", "#000000");
+		footer.hide();
+		width > 400 ? announce.css("padding-left", "100px") : announce.css("padding-left", "0px");
+	} else {
+		welcome.css("background-image", "url('/static/images/home_photo.png')");
+		footer.show();
+	};
+});
+
+
+// Shrink home header
+
+$(document).ready(function(){
+	var announce  = $(".home_header > h1:nth-child(1)");
+	var width = $(window).width();
+	if (width < 400){
+		announce.css("font-size", '4em');
+	};
+});
+
+
+// Resize RSVP Form Fields based on devie
+
+$(document).ready(function(){
+	var form_name = $('#name')
+	var form_email = $('#email')
+	var form_events = $('#events')
+	var form_guests = $('#guests')
+	var width = $(window).width();
+	if (width < 400){
+		form_name.css('width', '100%');
+		form_email.css('width', '100%');
+		form_events.css('width', '100%');
+		form_guests.css('width', '100%');
+	};
+});
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@
     </title>
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no">
     <!-- FONT
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
@@ -24,37 +24,50 @@
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
   </header>
-    <body id="welcome" style="background-image:url('{{ url_for('static', filename='images/home_photo.png') }}');">
+    <body id="welcome">
        <!-- Navigation
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="row" id="navigation">
-            <div class="twelve columns" id="nav">
+            <div class="twelve columns" id="home-nav">
                 <a href="/">Welcome</a>
-                &nbsp
-                &nbsp
-                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                 &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="15px" height="15px"/>
                 &nbsp
                 <a href="/story">Our Story</a>
-                &nbsp
-                &nbsp
-                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                 &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="15px" height="15px"/>
                 &nbsp
                 <a href="/ceremony">Ceremony</a>
-                &nbsp
-                &nbsp
-                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                 &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="15px" height="15px"/>
                 &nbsp
                 <a href="/reception">Reception</a>
-                &nbsp
-                &nbsp
-                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                 &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="15px" height="15px"/>
                 &nbsp
                 <a href="/registry">Registry</a>
-                &nbsp
-                &nbsp
-                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="17px" height="17px"/>
+                 &nbsp
+                <img src="{{ url_for('static', filename='images/rings_2.png') }}"  width="15px" height="15px"/>
                 &nbsp
                 <a href="/rsvp">RSVP</a>
+            </div>
+            <div class="mobile mobile-two">
+              <div class="header">
+                <div class="menu-toggle">
+                  <div class="line"></div>
+                  <div class="line"></div>
+                </div>
+              </div>
+              <div class="mobile-nav">
+                <ul>
+                  <li><a href="/">Welcome</a></li>
+                  <li><a href="/story">Our Story</a></li>
+                  <li><a href="/ceremony">Ceremony</a></li>
+                  <li><a href="/reception">Reception</a></li>
+                  <li><a href="/registry">Registry</a></li>
+                  <li><a href="/rsvp">RSVP</a></li>
+                </ul>
+              </div>
             </div>
         </div>
         <!-- Content 
@@ -66,6 +79,7 @@
       <div class="seven columns">
         <span class="home_header">
           <h1> 
+            <br>
             WE<br>
             ARE<br>
             GETTING<br> 

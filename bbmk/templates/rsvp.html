@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <br>
-        <div class="twelve columns offset-by-three">
+        <div class="nine columns offset-by-three">
         <h1><b>RSVP</b></h1>
             <span id="errors">
                 {% if errors != None %}
@@ -26,19 +26,19 @@
                 {{ form.guests.label }} {{ form.guests(class_="u-half-width") }} 
                 <button type="button" class="button-primary" id="add_guest_button">Add Guest</button>
                 <span id="guest_1">
-                    {{ form.add_guest_1.label }} {{ form.add_guest_1(class_="u-half-width") }}
+                    {{ form.add_guest_1.label }} {{ form.add_guest_1(class_="u-full-width") }}
                 </span>
                 <span id="guest_2">
-                    {{ form.add_guest_2.label }} {{ form.add_guest_2(class_="u-half-width") }}
+                    {{ form.add_guest_2.label }} {{ form.add_guest_2(class_="u-full-width") }}
                 </span>
                 <span id="guest_3">
-                    {{ form.add_guest_3.label }} {{ form.add_guest_3(class_="u-half-width") }}
+                    {{ form.add_guest_3.label }} {{ form.add_guest_3(class_="u-full-width") }}
                 </span>
                 <span id="guest_4">
-                    {{ form.add_guest_4.label }} {{ form.add_guest_4(class_="u-half-width") }}
+                    {{ form.add_guest_4.label }} {{ form.add_guest_4(class_="u-full-width") }}
                 </span>
                 <span id="guest_5">
-                    {{ form.add_guest_5.label }} {{ form.add_guest_5(class_="u-half-width") }}
+                    {{ form.add_guest_5.label }} {{ form.add_guest_5(class_="u-full-width") }}
                 </span>
                 <br>
                 <span id="guest_limit" style="color:red;"> 

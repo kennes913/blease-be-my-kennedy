@@ -11,38 +11,133 @@
   z-index: 100;
   border-top: 0;
 }
-/*---*/
 
-#nav {
-	text-align: center;
+/* ----- Media Queries ---*/
+
+@media (max-width: 785px) {
+
+  /*---- Home ----*/
+
+  .home_header > h1 {
+
+    font-weight:bold;
+    font-size:5em;
+  }
+
+
+  /*----- Nav -----*/
+
+  #nav {
+    display: none;
+  }
+
+  #home-nav {
+    display: none;
+  }
+
+
+  .mobile{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  }
   
+  .mobile .header{
+    background-color: #50C878;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .line{
+    width: 30px;
+    height: 2px;
+    margin: 10px 0;
+    background-color: #fff;
+  }
+  
+  .menu-toggle:hover{
+    cursor: pointer;
+  }
+  
+  .mobile-nav ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+
+  /* MOBILE TWO */
+
+  /*.mobile-two{
+    background: #8a43a3;
+    background: -webkit-linear-gradient(#8a43a3, #5c6bac); 
+    background: -o-linear-gradient(#8a43a3, #5c6bac); 
+    background: -moz-linear-gradient(#8a43a3, #5c6bac); 
+    background: linear-gradient(#8a43a3, #5c6bac);
+  }*/
+  
+  .mobile-two .mobile-nav{
+    background-color: #3e3d3b;
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+  }
+  
+  .mobile-two .mobile-nav li a{
+    color: #FFFFFF;
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+  }
+  
+  .mobile-two .mobile-nav li a:hover{
+    background-color: #33c3f0;
+    color: #fff;
+  }
+
+  .home_header > h1 {
+    font-weight:bold;
+    font-size:4em;
+  }
 }
 
-#nav a {
+@media (min-width: 785px) {
 
-	text-decoration: none;
-  color:#50C878;
-  font-weight:bold;
+  #navigation > div.mobile.mobile-two {
+    display: none;
+  }
+
+  #home-nav, #nav {
+    text-align: center;
+  }
+  
+  #home-nav a {
+    text-decoration: none;
+    color:#50C878;
+    font-weight:bold;
+
+  }
+
+  #nav a {
+    text-decoration: none;
+    color:#50C878;
+    font-weight:bold;
+  }
+
+  #nav a {
+    font-size:1em;
+  }
+
+  #home-nav a {
+    font-size:1.5em;
+  }
 
 }
 
-@media (max-width: 400px) {
-	#nav a {
-		font-size:0.7em;
-	}
-    .home_header > h1 {
-      font-weight:bold;
-      font-size:4em;
-    }
-}
-
-@media (min-width: 400px) {
-	#nav a {
-		font-size:1em;
-	}
-}
-
-@media (min-width: 1200px) {
+@media (min-width: 785px) {
 	#nav a {
 		font-size:1.5em;
 	}
@@ -58,7 +153,9 @@
 
 #welcome {
     background-size:cover;
+    background-image: url('/static/images/home_photo.png');
 }
+
 
 /* -------- CEREMONY & RECEPTION ---------*/
 
@@ -68,7 +165,17 @@
     font-size:1.25em;
 }
 
-/* -------- FORM ERRORS ---------*/
+.four > img:nth-child(1) {
+  max-width:100%;
+  max-height:90%;
+}
+
+div.six:nth-child(2) > img:nth-child(1) {
+  max-width:100%;
+  max-height:100%;
+}
+
+/* -------- RSVP ---------*/
 
 #errors {
 
@@ -76,13 +183,16 @@
     list-style-type:none;
 
 }
+#form {
+}
 
 /* -------- REGISTRY ---------*/
 
 #registry.container {
 
     text-align: center;
-    padding: 100px;
+    max-width: 100%;
+    padding-top: 50px;
 
 }
 
