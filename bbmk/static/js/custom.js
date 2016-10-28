@@ -111,7 +111,7 @@ $(document).ready(function(){
 		welcome.css("background-image", "none");
 		announce.css("color", "#000000");
 		footer.hide();
-		width > 400 ? announce.css("padding-left", "100px") : announce.css("padding-left", "0px");
+		width > 600 ? announce.css("padding-left", "100px") : announce.css("padding-left", "0px");
 	} else {
 		welcome.css("background-image", "url('/static/images/home_photo.png')");
 		footer.show();
