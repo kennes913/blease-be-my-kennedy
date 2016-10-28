@@ -8,7 +8,7 @@
 
 $(document).ready(function() {
 	var width = $(window).width();
-	if (width > 450) {
+	if (width > 600) {
 		$(window).scroll(function() {
 			var scrollTop = $(this).scrollTop();
 			if (scrollTop > 0) {

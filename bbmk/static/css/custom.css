@@ -24,6 +24,10 @@
     font-size:5em;
   }
 
+  .home_header > img {
+    width: 23%;
+    height: 25%;
+  }
 
   /*----- Nav -----*/
 
@@ -105,6 +109,10 @@
 }
 
 @media (min-width: 785px) {
+
+  .home_header > img {
+    display:none;
+  }
 
   #navigation > div.mobile.mobile-two {
     display: none;
