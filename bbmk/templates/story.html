@@ -4,27 +4,27 @@
 {% endblock %}
 {% block content %}
     <div class="container" id="story">
-        <br>
-        <h1><b>Our Story</b></h1>
-        <div class="row">
-            <div class="four columns">
-                <img src="{{ url_for('static', filename='images/portara.jpg') }}"/>
-            </div>
-            <div class="eight columns">
-                <p>
-                    Sean was a supervisor at the University of Texas alumni donation call center and Amanda was a caller. The call center’s tagline was    “Hooked on Texas,” and that’s not the only thing Amanda and Sean got hooked on. What starts here changes the world, people.
-                </p>    
-                <p>
-                    However, I’m getting ahead of myself – at the time, Amanda was dating someone else and so was Sean. But they kept in touch and four years later the spark was ignited. They began dating and the rest is history.
-                </p>
-                <p>
-                    They now live happily ever after in Austin with their noble steed, Crash, an 87-pound dobrador whose visage closely resembles that of the North American river otter.
-                </p>
-                <p>
-                    They enjoy traveling, reading individually in the same room, and devising scenarios for the otter, such as a job interview in which he succeeds in every regard but cannot pass his typing test due to his lack of opposable thumbs.
-                </p>
-    
-            </div>
+        <!---
+        <div class="four columns" id="story-photo">
+        <img src="{{ url_for('static', filename='images/portara.jpg') }}"/>
         </div>
-    </div> 
+        -->
+        <div class="eight columns offset-by-two">
+            <br>
+            <h1><b>Our Story</b></h1>
+            <hr class="style-one"></hr>
+            <p>
+                Sean was a supervisor at the University of Texas alumni donation call center and Amanda was a caller. The call center’s tagline was “Hooked on Texas,” and that’s not the only thing Amanda and Sean got hooked on. What starts here changes the     world, people.
+            </p>    
+            <p>
+                However, I’m getting ahead of myself – at the time, Amanda was dating someone else and so was Sean. But they kept in touch and  four years later the spark was ignited. They began dating and the rest is history.
+            </p>
+            <p>
+                They now live happily ever after in Austin with their noble steed, Crash, an 87-pound dobrador whose visage closely resembles   that of the North American river otter.
+            </p>
+            <p>
+                They enjoy traveling, reading individually in the same room, and devising scenarios for the otter, such as a job interview in   which he succeeds in every regard but cannot pass his typing test due to his lack of opposable thumbs.
+            </p>
+        </div>
+    </div>
 {% endblock %}

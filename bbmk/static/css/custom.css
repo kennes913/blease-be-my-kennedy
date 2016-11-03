@@ -1,7 +1,24 @@
 
-/* --------NAVIGATION ---------*/
+/* STATIC STYLES ------------------------------*/
+/* --------------------------------------------*/
+/* --------------------------------------------*/
 
-/* For Smooth Scrolling */
+/* ------ HEADERS ----- */
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+#form {
+  display:block;
+  margin:auto;
+
+}
+
+/* --------NAVIGATION ---------*/
 
 .sticky {
   position: fixed;
@@ -12,24 +29,148 @@
   border-top: 0;
 }
 
-/* ----- Media Queries ---*/
 
-@media (max-width: 785px) {
+/* -------- BASE ---------*/
 
-  /*---- Home ----*/
+#base {
+  background-size:cover;
+  background-image: url('/static/images/concrete_2.png');
+}
 
-  .home_header > h1 {
 
+/* -------- HOME ---------*/
+
+.home_header > h1 {
     font-weight:bold;
-    font-size:5em;
-  }
+    font-size:6em;
+}
 
-  .home_header > img {
+#welcome {
+    background-size:cover;
+    background-image: url('/static/images/home_photo.png');
+}
+
+
+/* -------- CEREMONY & RECEPTION ---------*/
+
+.subheader {
+  font-weight:bold;
+  font-size:1.55em;
+}
+
+#reception-photo > img {
+  margin:auto;
+  max-height:100%;
+  max-width:100%;
+}
+
+#ceremony-photo > img {
+  margin:auto;
+  max-height:100%;
+  max-width:100%;
+}
+
+#story-photo > img {
+  margin:auto;
+  max-height:100%;
+  max-width:100%;
+}
+
+/* -------- RSVP ---------*/
+
+#errors {
+    color:red;
+    list-style-type:none;
+}
+
+
+/* -------- REGISTRY ---------*/
+
+#registry.container {
+    text-align: center;
+    max-width: 100%;
+    padding-top: 50px;
+
+}
+
+
+/* -------- MANAGE ---------*/
+
+#current_guests.twelve.columns {
+  width:100%;
+  overflow-y: auto;
+  height:400px;
+}
+
+
+/* MEDIA QUERIES ------------------------------*/
+/* --------------------------------------------*/
+/* --------------------------------------------*/
+
+@media(max-width: 450px) {
+  
+ /*------- HOME  -------*/
+
+ #welcome {
+    background-size:cover;
+    background-image: url('/static/images/concrete_2.png');
+  }  
+
+  .emojis > img {
     width: 23%;
     height: 25%;
   }
 
-  /*----- Nav -----*/
+  .home_header > h1 {
+    font-weight:bold;
+    font-size: 4em;
+  }
+
+
+ /* -------- CEREMONY & RECEPTION ---------*/
+
+  #reception-photo {
+    display:none;
+   }
+
+   #ceremony-photo {
+    display:none;
+   }
+
+   #story-photo {
+    display:none;
+  }
+}
+
+
+@media (min-width: 451px) {
+
+  /*------- HOME  -------*/
+
+  .emojis > img {
+    display:none;
+  }
+
+  #welcome {
+    background-image: url('/static/images/concrete_2.png');
+    text-align:center;
+  }
+
+  .home_header > h1 {
+    font-weight:bold;
+    font-size: 6em;
+  }
+}
+
+@media (max-width: 785px) {
+
+  /*---- HOME ----*/
+
+  #welcome {
+    background-image: url('/static/images/concrete_2.png');
+  }
+
+  /*----- NAVIGATION  -----*/
 
   #nav {
     display: none;
@@ -38,7 +179,6 @@
   #home-nav {
     display: none;
   }
-
 
   .mobile{
     width: 100%;
@@ -71,16 +211,6 @@
     list-style-type: none;
   }
 
-
-  /* MOBILE TWO */
-
-  /*.mobile-two{
-    background: #8a43a3;
-    background: -webkit-linear-gradient(#8a43a3, #5c6bac); 
-    background: -o-linear-gradient(#8a43a3, #5c6bac); 
-    background: -moz-linear-gradient(#8a43a3, #5c6bac); 
-    background: linear-gradient(#8a43a3, #5c6bac);
-  }*/
   
   .mobile-two .mobile-nav{
     background-color: #3e3d3b;
@@ -106,13 +236,30 @@
     font-weight:bold;
     font-size:4em;
   }
+
+
+ /*----- FOOTER  -----*/
+
+  footer {
+    display:none;
+  }
+
 }
 
 @media (min-width: 785px) {
 
-  .home_header > img {
+/*---- HOME ----*/
+
+  .emojis {
     display:none;
   }
+
+  #welcome {
+    background-image: url('/static/images/concrete_2.png');
+    text-align:center;
+  }
+
+/*----- NAVIGATION  -----*/
 
   #navigation > div.mobile.mobile-two {
     display: none;
@@ -126,6 +273,7 @@
     text-decoration: none;
     color:#50C878;
     font-weight:bold;
+    font-size:1.5em;
 
   }
 
@@ -133,85 +281,56 @@
     text-decoration: none;
     color:#50C878;
     font-weight:bold;
-  }
-
-  #nav a {
-    font-size:1em;
-  }
-
-  #home-nav a {
     font-size:1.5em;
   }
+  
+/*----- FOOTER  -----*/
 
+  footer {
+    display:none;
+  }
+  
 }
 
-@media (min-width: 785px) {
-	#nav a {
-		font-size:1.5em;
-	}
-}
+@media (min-width: 1024px) {
 
-/* -------- HOME  ---------*/
+   #reception-photo {
+    display:block;
+    margin:auto;
+    max-height:100%;
+    max-width:100%;
+   }
 
-.home_header > h1 {
+   #ceremony-photo > img {
+    display:block;
+    margin:auto;
+    max-height:80%;
+    max-width:80%;
+  }
 
-    font-weight:bold;
-    font-size:6em;
-}
+   #story-photo {
+    display:block;
+   }
 
-#welcome {
+   #base {
+     background-size:cover;
+     background-image: url('/static/images/concrete_2.png');
+   }
+
+  #welcome {
     background-size:cover;
     background-image: url('/static/images/home_photo.png');
-}
+    text-align:left;
+  }
 
-
-/* -------- CEREMONY & RECEPTION ---------*/
-
-.subheader {
-
-    font-weight:bold;
-    font-size:1.25em;
-}
-
-.four > img:nth-child(1) {
-  max-width:100%;
-  max-height:90%;
-}
-
-div.six:nth-child(2) > img:nth-child(1) {
-  max-width:100%;
-  max-height:100%;
-}
-
-/* -------- RSVP ---------*/
-
-#errors {
-
-    color:red;
-    list-style-type:none;
-
-}
-#form {
-}
-
-/* -------- REGISTRY ---------*/
-
-#registry.container {
-
-    text-align: center;
-    max-width: 100%;
-    padding-top: 50px;
+  footer {
+    display:block;
+  }
 
 }
 
-/* -------- MANAGE ---------*/
 
-#current_guests.twelve.columns {
 
-  width:100%;
-  overflow-y: auto;
-  height:400px;
-}
 
 
 

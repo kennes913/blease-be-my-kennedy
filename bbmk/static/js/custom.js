@@ -85,7 +85,8 @@ $(document).ready(function() {
 
 // Remove photos based on media query size (This can be done with css instead!)
 
-$(document).ready(function(){
+/*
+	$(document).ready(function(){
 	var reception_photo = $("div.six:nth-child(2) > img:nth-child(1)")
 	var ceremony_photo = $(".four > img:nth-child(1)")
 	var width = $(window).width();
@@ -98,10 +99,11 @@ $(document).ready(function(){
 	};
 
 });
-
+*/
 
 //Remove homepage background image. 
 
+/*
 $(document).ready(function(){
 	var welcome  = $("#welcome");
 	var announce  = $(".home_header > h1:nth-child(1)");
@@ -117,10 +119,10 @@ $(document).ready(function(){
 		footer.show();
 	};
 });
-
+*/
 
 // Shrink home header
-
+/*
 $(document).ready(function(){
 	var announce  = $(".home_header > h1:nth-child(1)");
 	var width = $(window).width();
@@ -128,9 +130,10 @@ $(document).ready(function(){
 		announce.css("font-size", '4em');
 	};
 });
+*/
 
 
-// Resize RSVP Form Fields based on devie
+// Resize RSVP Form Fields based on device
 
 $(document).ready(function(){
 	var form_name = $('#name')

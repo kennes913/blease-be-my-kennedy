@@ -3,27 +3,26 @@
     Wedding Reception
 {% endblock %}
 {% block content %}
-  <div class="container" id="reception">
-        <br>
-        <h1><b>Reception</b></h1>
-        <div class="row">
-            <div class="six columns">
-                <span class="subheader">Where:</span>
-                <a href="https://www.google.com/maps/place/Palm+Door+on+Sabine/@30.2645352,-97.7387148,17z/data=!3m1!4b1!4m5!3m4!1s0x8644b5a8af23f395:0x2090a151414de094!8m2!3d30.2645306!4d-97.7365261">
-                    <p>Palm Door on Sabine, 401 Sabine Street</p>
-                </a>
-                <span class="subheader">When:</span>
-                <p> February 10, 2016 5:00-11:00 P.M.</p>
-                <span class="subheader">Details:</span>
-                <p> Paella, tapas, pintxos, drinks and groovy tunes!</p>
-                <span class="subheader">Parking:</span>
-                <p>
-                    Downtown Austin parking is notoriously difficult. We recommend either taking a rideshare service from your hotel to and from the reception or parking at the Convention Center (rates are about $10-$15 for 6-7 hours), which is just a couple blocks away. If you're willing to put in the effort, you can always scour the block for street parking; however, there are often three-hour limits on street parking.
-                </p>
-            </div>
-            <div class="six columns" id='reception-photo'>
-                <img src="{{ url_for('static', filename='images/pd_sabine.jpg') }}" width="580" height="386"/>
-            </div>
+    <div class="container" id="reception">
+        <div class="eight columns offset-by-two">
+            <br>
+            <h1><b>Reception</b></h1>
+            <hr class="style-one"></hr>
+            <span class="subheader">Where:</span>
+            <a href=link goes here>
+                <p>Palm Door on Sabine, 401 Sabine Street</p>
+            </a>
+            <span class="subheader">When:</span>
+            <p> February 10, 2016 5:00-11:00 P.M.</p>
+            <span class="subheader">Details:</span>
+            <p> Paella, tapas, pintxos, drinks and tunes!</p>
+            <span class="subheader">Parking:</span>
+            <p>
+                Downtown Austin parking is notoriously difficult. We recommend either taking a rideshare service from your hotel to and from the reception or parking at the Convention Center (rates are about $10-$15 for 6-7 hours), which is just a couple blocks away. If you're willing to put in the effort, you can always scour the block for street parking; however, there are often three-hour  limits on street parking.
+            </p>
+             <!--<span id="reception-photo">
+                <img src="{{ url_for('static', filename='images/pd_sabine.jpg') }}"/>
+            </span>-->
         </div>
     </div>
 {% endblock %}

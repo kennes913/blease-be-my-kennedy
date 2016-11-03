@@ -3,27 +3,27 @@
     Wedding Ceremony
 {% endblock %}
 {% block content %}
-    <div class="container" id="ceremony">
+<div class="container" id="ceremony">
+    <div class="eight columns offset-by-two">
         <br>
-        <h1><b>Ceremony</b></h1> 
-        <div class="row">
-            <div class="six columns">       
-                <span class="subheader">Where:</span>
-                    <a href=https://www.google.com/maps/place/Chapel+Dulcinea/@30.1467612,-97.9690863,17z/data=!3m1!4b1!4m5!3m4!1s0x865b45788ef53f39:0x8eb9827162b7e1a2!8m2!3d30.1467566!4d-97.9668976>
-                        <p>Chapel Dulcinea, 16221 Crystal Hills Drive</p>
-                    </a>
-                <span class="subheader">When:</span>
-                    <p> February 10, 2016 3:30-4:30 P.M.</p>
-                <span class="subheader">Details:</span>
-                    <p>
-                    We will have a brief civil ceremony at Chapel Dulcinea. Please note Chapel Dulcinea will be <b>standing room only</b> with a few benches for elderly guests so plan to bring a change of footwear accordingly if needed. There is room for 30 under the chapel and room for about 40-80 people around the outside. That's right, <i>outside</i>; it’s an outdoor venue and Texas weather is notoriously unpredictable! It will be first come first served for seating under the chapel.
-                    </p>
-                <span class="subheader">Parking:</span>
-                    <p> Lot Parking </p>
-            </div>
-            <div class="six columns" id=ceremony>
-                 <img src="{{ url_for('static', filename='images/chapel_dulcinea.jpg') }}" width="580" height="386"/>
-            </div>
-        </div>
+        <h1><b>Ceremony</b></h1>
+        <hr class="style-one"></hr>
+        <span class="subheader">Where:</span>
+        <a href=link goes here>
+            <p>Chapel Dulcinea, 16221 Crystal Hills Drive</p>
+        </a>
+        <span class="subheader">When:</span>
+        <p> February 10, 2016 3:30-4:30 P.M.</p>
+        <span class="subheader">Details:</span>
+        <p>
+            We will have a brief civil ceremony at Chapel Dulcinea. Please note Chapel Dulcinea will be <b>standing room only</b> with a few benches for elderly guests so plan to bring a change of footwear accordingly if needed. There is room for 30 under the chapel and room for about 40-80 people around the outside. That's right, <i>outside</i>; it’s an outdoor venue and Texas weather is notoriously unpredictable! It will be first come first served for seating under the chapel.
+        </p>
+        <span class="subheader">Parking:</span>
+        <p> There's lot parking.</p>
+        <br>
+        <!--<span id="ceremony-photo">
+            <img src="{{ url_for('static', filename='images/chapel_dulcinea.jpg') }}"/>
+        </span>-->
     </div>
+</div>
 {% endblock %}
