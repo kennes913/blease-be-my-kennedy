@@ -1,6 +1,7 @@
 // Ad hoc functionality
 // By: Sean Kennedy
 
+
 /* Fading Navbar:
 	Code found here:
 	http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
@@ -8,7 +9,7 @@
 
 $(document).ready(function() {
 	var width = $(window).width();
-	if (width > 600) {
+	if (width > 785) {
 		$(window).scroll(function() {
 			var scrollTop = $(this).scrollTop();
 			if (scrollTop > 0) {
@@ -23,7 +24,21 @@ $(document).ready(function() {
 });
 
 
-// RSVP Form Add Guest Functionality
+/* 
+ Navigation dropdown mobile device menu:
+ 	HTML/CSS can be found at https://codepen.io/RRoberts/pen/OXxkzm
+*/
+
+$(document).ready(function() {
+	$(".mobile-two .menu-toggle").click(function() {
+		$(this).parent().next(".mobile-nav").toggle(0 , "display");
+	});
+});
+
+
+/*
+ RSVP Form Add Guest Functionality
+*/
 
 $(document).ready(function() {
 
@@ -70,70 +85,10 @@ $(document).ready(function() {
 	});
 });
 
-
 /* 
- Navigation dropdown mobile device menu:
- 	HTML/CSS can be found at https://codepen.io/RRoberts/pen/OXxkzm
+ Resize RSVP Form Fields based on device
 */
 
-$(document).ready(function() {
-	$(".mobile-two .menu-toggle").click(function() {
-		$(this).parent().next(".mobile-nav").toggle(0 , "display");
-	});
-});
-
-
-// Remove photos based on media query size (This can be done with css instead!)
-
-/*
-	$(document).ready(function(){
-	var reception_photo = $("div.six:nth-child(2) > img:nth-child(1)")
-	var ceremony_photo = $(".four > img:nth-child(1)")
-	var width = $(window).width();
-	if (width < 600){
-		reception_photo.hide();
-		ceremony_photo.hide();
-	} else {
-		reception_photo.show();
-		ceremony_photo.show();
-	};
-
-});
-*/
-
-//Remove homepage background image. 
-
-/*
-$(document).ready(function(){
-	var welcome  = $("#welcome");
-	var announce  = $(".home_header > h1:nth-child(1)");
-	var footer  = $("footer");
-	var width = $(window).width();
-	if (width < 1025){
-		welcome.css("background-image", "none");
-		announce.css("color", "#000000");
-		footer.hide();
-		width > 600 ? announce.css("padding-left", "100px") : announce.css("padding-left", "0px");
-	} else {
-		welcome.css("background-image", "url('/static/images/home_photo.png')");
-		footer.show();
-	};
-});
-*/
-
-// Shrink home header
-/*
-$(document).ready(function(){
-	var announce  = $(".home_header > h1:nth-child(1)");
-	var width = $(window).width();
-	if (width < 400){
-		announce.css("font-size", '4em');
-	};
-});
-*/
-
-
-// Resize RSVP Form Fields based on device
 
 $(document).ready(function(){
 	var form_name = $('#name')
