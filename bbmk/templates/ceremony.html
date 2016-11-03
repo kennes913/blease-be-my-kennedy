@@ -8,8 +8,12 @@
         <br>
         <h1><b>Ceremony</b></h1>
         <hr class="style-one"></hr>
+        <span id="ceremony-photo">
+            <img src="{{ url_for('static', filename='images/chapel_dulcinea.jpg') }}"/>
+        </span>
+        <hr class="style-one" id="second"></hr>
         <span class="subheader">Where:</span>
-        <a href=link goes here>
+        <a href=https://goo.gl/maps/kpWRzTqjXT82>
             <p>Chapel Dulcinea, 16221 Crystal Hills Drive</p>
         </a>
         <span class="subheader">When:</span>
@@ -21,9 +25,6 @@
         <span class="subheader">Parking:</span>
         <p> There's lot parking.</p>
         <br>
-        <!--<span id="ceremony-photo">
-            <img src="{{ url_for('static', filename='images/chapel_dulcinea.jpg') }}"/>
-        </span>-->
     </div>
 </div>
 {% endblock %}
