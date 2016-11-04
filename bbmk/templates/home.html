@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <!-- Header -->
-  <header>
+  <head>
     <meta charset="utf-8">
     <title>
         Amanda and Sean's Wedding Site
@@ -18,12 +18,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-        <!-- JS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-     
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-  </header>
+  </head>
     <body id="welcome">
        <!-- Navigation
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -93,7 +88,11 @@
           <img src="{{ url_for('static', filename='images/bride-96.png') }}"/>
         </span>
   </div>
-  </div
+  </div>
+  <!-- JS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
   </body>
   <!-- Footer
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

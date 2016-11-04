@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 	<!-- Header -->
-	<header>
+	<head>
 		<meta charset="utf-8">
 		<title>
 			404 Error
@@ -18,15 +18,16 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-
+	</head>
+	<body>
+		<div class="container" style="text-align:center">
+			<title>404: It seems you've strayed from the path.</title>
+			<h1>404: It seems you've strayed from the path.</h1>
+			<p>A careful and diligent search has been made for the desired page, but it cannot be found.</p>
+		</div>
 		<!-- JS
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/custom.js') }}"></script>   	
-	</header>
-	<div class="container" style="text-align:center">
-		<title>404: It seems you've strayed from the path.</title>
-		<h1>404: It seems you've strayed from the path.</h1>
-		<p>A careful and diligent search has been made for the desired page, but it cannot be found.</p>
-	</div>
+	</body>
 </html>

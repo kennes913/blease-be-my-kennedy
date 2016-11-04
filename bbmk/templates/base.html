@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<!-- Header -->
-	<header>
+	<head>
 		<meta charset="utf-8">
 		<title>
             {% block title %}
@@ -14,17 +14,12 @@
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:800|Exo+2:800" rel="stylesheet">
-
 		<!-- CSS
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-        <!-- JS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-	</header>
+	</head>
     <body id="base">
        <!-- Navigation
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -75,6 +70,10 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
        {% block content %}
        {% endblock %}
+       <!-- JS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
   </body>
   <!-- Footer
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
