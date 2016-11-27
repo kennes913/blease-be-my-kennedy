@@ -38,7 +38,7 @@ class RSVPForm(Form):
 			  ('Both', 'Both')]					
 	guests = [('', ''),('Yes', 'Yes'),('No', 'No')]
 
-	name = StringField('Name', validators=[InputRequired()], render_kw=placeholders['name'])
+	name = StringField('Name', validators=[InputRequired(), Bouncer()], render_kw=placeholders['name'])
 	email = StringField('What is your email address?', validators=[DataRequired()], render_kw=placeholders['email'])
 	guests = SelectField('Are you bringing a guest?', choices=guests, validators=[DataRequired()])
 	events = SelectField('What event(s) are you attending?', choices=events, validators=[DataRequired()])
