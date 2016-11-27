@@ -1,5 +1,6 @@
 """
-TODO: add docstring
+The forms module contains forms and validator classes
+used in flask app.
 """
 from database import expected
 
@@ -9,8 +10,9 @@ from wtforms.validators import DataRequired, InputRequired
 from wtforms import StringField, SelectField, FileField
 
 class Bouncer:
-	"""
-	TODO: add docstring 
+	""" The Bouncer class is used as a validator 
+	in the RSVPForm. It imports invited guests and checks 
+	against this list.
 	"""
 	def __init__(self, guest_list=None):
 		if guest_list:
@@ -20,12 +22,12 @@ class Bouncer:
 
 	def __call__(self, form, field):
 		if str(field.data).lower() not in self.approved:
-			raise ValidationError('This name is now on the guest list.')
+			raise ValidationError('Does not exist on the invited list.')
 
 
 class RSVPForm(Form):
-	"""
-	TODO: add docstring 
+	""" The RSVPForm is a Form class that is used by potential guests
+	to RSVP. 
 	"""
 	placeholders = {'name':{"placeholder":"First and Last Name"},
 				    'email':{"placeholder":"email@domain.com"},
@@ -36,7 +38,7 @@ class RSVPForm(Form):
 			  ('Both', 'Both')]					
 	guests = [('', ''),('Yes', 'Yes'),('No', 'No')]
 
-	name = StringField('Name', validators=[InputRequired(), Bouncer()], render_kw=placeholders['name']) # Bouncer Validator not inserted for testing purposes
+	name = StringField('Name', validators=[InputRequired()], render_kw=placeholders['name'])
 	email = StringField('What is your email address?', validators=[DataRequired()], render_kw=placeholders['email'])
 	guests = SelectField('Are you bringing a guest?', choices=guests, validators=[DataRequired()])
 	events = SelectField('What event(s) are you attending?', choices=events, validators=[DataRequired()])
@@ -46,8 +48,9 @@ class RSVPForm(Form):
 
 
 class FileUploadForm(Form):
-	"""
-	TODO: add docstring 
+	""" The FileUploadForm is used to upload a list of invited guests
+	in a csv or xlsx file. The file must contain a guest, name or guest name 
+	column containing a first and last name. 
 	"""
 	guests = FileField()	
 

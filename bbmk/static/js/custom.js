@@ -1,11 +1,8 @@
-// bleasebemykennedy.com functionality 
-// By: Sean Kennedy
-
+// bleasebemykennedy.com dynamic functionality 
 
 /* 
 Fading Navbar:
-	Code found here:
-	http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
+	Credit: http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
 */
 
 $(document).ready(function() {
@@ -27,7 +24,7 @@ $(document).ready(function() {
 
 /* 
  Navigation dropdown mobile device menu:
- 	HTML/CSS can be found at https://codepen.io/RRoberts/pen/OXxkzm
+ 	Credit: https://codepen.io/RRoberts/pen/OXxkzm
 */
 
 $(document).ready(function() {

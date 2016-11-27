@@ -1,7 +1,7 @@
 """
-TODO: add module docstrings
+The utils module contains functions used throughout
+the flask app.
 """
-
 import bbmk.config
 import bbmk.app
 
@@ -188,8 +188,12 @@ def process_csv_upload(stream):
 
 
 def rsvp_guests_to_csv(model):
-	"""
-	TODO: add docstrings 
+	""" This function queries a given model in the 
+	database and returns a csv reperesentation. 
+	
+	:params model: table class, table you want query
+	
+	return :: str, csv representation of query
 	"""
 	headers = model._meta.sorted_field_names
 	csv = ",".join(headers)+'\n'

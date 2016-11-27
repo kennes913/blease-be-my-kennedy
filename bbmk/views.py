@@ -1,5 +1,6 @@
 """
-TODO: add docstring
+The views module contains all views routed in
+flask app.
 """
 import os
 import csv 

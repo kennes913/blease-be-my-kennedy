@@ -1,5 +1,5 @@
 """
-TODO: add docstring
+bleasebemykennedy.com flask app
 """
 
 import utils

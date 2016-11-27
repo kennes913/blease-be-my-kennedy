@@ -10,11 +10,10 @@
             <span id="errors">
                 {% if errors != None %}
                     {% if errors['name'] %}
-                        Uh oh, something went wrong. <br> 
-                        Retype your name with a <b>single space</b> between first and last name.
+                     <b>RSVP not successful.</b> Make sure to type your full <b>first</b> and <b>last</b> name.</br>
                     {% else %}
-                        You must fill out your name, email, the name of your guests<br>
-                        and the event(s) you're attending.
+                        <b>RSVP not successful.</b> Did you include the <b>name</b> of your guests,<br><b>email</b> and 
+                        select the <b>events</b> you're attending?
                     {% endif %}        
                 {% endif %}
             </span>
@@ -41,7 +40,7 @@
                 </span>
                 <button class="button-primary" id="rsvp_button">RSVP</button>
             </form>
-            <b> If you have any questions, reach out to <a href src="mailto:amandablease@gmail.com">amandablease@gmail.com</a>.</b>
+            <b> If you have any questions, reach out to Amanda or Sean.</b>
         </div>
     </div>
 {% endblock %}

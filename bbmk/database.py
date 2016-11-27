@@ -1,5 +1,6 @@
 """
-TODO: add docstring
+The database module contains all database models
+used in flask app. 
 """
 import utils
 
@@ -9,12 +10,14 @@ from app import db
 config = utils.load_config()
 
 class DatabaseModel(db.Model):
+    """ Base model. 
+    """
     class Meta:
         database = db
 
 class guest(db.Model):
-    """
-    TODO: add docstring 
+    """ The guest table. This contains
+    people who have RSVPed to the wedding.
     """
     rsvp_time = TextField(null=True)
     name = CharField(null=True, primary_key=True)
@@ -27,8 +30,8 @@ class guest(db.Model):
         db_table = 'guest'
 
 class expected(db.Model):
-    """
-    TODO: add docstring 
+    """ The expected table. This contains
+    people who are invited to wedding. 
     """
     name = CharField(null=True, primary_key=True)
 
