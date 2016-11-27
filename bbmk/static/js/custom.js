@@ -47,7 +47,7 @@ $(document).ready(function() {
 	var agCounter = 0
 
 	// initial state
-	ags.forEach(function(x){x.hide();}); 
+	ags.forEach(function(x){x.hide();});
 	limit.hide();
 	agButton.hide();
 
@@ -56,11 +56,11 @@ $(document).ready(function() {
 		if ($(this).val() == 'Yes') {
 			agButton.show();
 		} else {
+			var ags = [$("span#guest_1"), $("span#guest_2"), $("span#guest_3")]
 			agCounter = 0; 
 			ags.forEach(function(x){x.hide();});
 			agButton.hide();
 			limit.hide();
-			var ags = [$("span#guest_1"), $("span#guest_2"), $("span#guest_3")]
 		}
 	});
 

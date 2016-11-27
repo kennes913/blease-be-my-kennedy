@@ -56,8 +56,11 @@ def rsvp():
 		errors = request.args.get('errors')
 		return render_template('rsvp.html',form=RSVPForm(), errors=errors)
 	if request.method == 'POST':
-		db.connect_db()
 		form = RSVPForm(request.form)
+		data = form.data
+		if data.get('name') and not any([data.get('add_guest_1'), \
+			data.get('add_guest_2'), data.get('add_guest_3')]):
+			return render_template('rsvp.html', form=RSVPForm(), errors=['DummyError'])
 		if form.validate():
 			utils.process_rsvp_form(guest, form.data) 
 			return redirect(url_for('general.success'))
