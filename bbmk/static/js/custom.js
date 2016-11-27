@@ -1,8 +1,9 @@
-// Ad hoc functionality
+// bleasebemykennedy.com functionality 
 // By: Sean Kennedy
 
 
-/* Fading Navbar:
+/* 
+Fading Navbar:
 	Code found here:
 	http://stackoverflow.com/questions/17713389/how-to-hide-show-nav-bar-when-user-scrolls-up-down
 */
@@ -41,54 +42,47 @@ $(document).ready(function() {
 */
 
 $(document).ready(function() {
+	
+	// declare primary variables
+	var ags = [$("span#guest_1"), $("span#guest_2"), $("span#guest_3")]
+	var agButton = $("button#add_guest_button.button-primary")
+	var limit = $("span#guest_limit")
+	var agCounter = 0
 
-	// Guest counter
-	var guests = 1
+	// initial state
+	ags.forEach(function(x){x.hide();}); 
+	limit.hide();
+	agButton.hide();
 
-	// Hide-show spans
-	$("span#guest_1").hide();
-	$("span#guest_2").hide();
-	$("span#guest_3").hide();
-	$("span#guest_4").hide();
-	$("span#guest_5").hide();
-	$("span#guest_limit").hide();
-
-	// Add-remove buttons
-	$("button#add_guest_button.button-primary").hide();
-	$("button#reset_button.button-primary").hide();
-
-	// Show or hide "Add guest" button based on select value
+	// hide/show "Add Guest" Button
 	$("select#guests.u-half-width").change(function() {
 		if ($(this).val() == 'Yes') {
-			$("button#add_guest_button.button-primary").show();
+			agButton.show();
 		} else {
-			// struggled with this for a few moments
-			guests = 1; 
-			$("button#add_guest_button.button-primary").hide();
-			$("span#guest_1").hide();
-			$("span#guest_2").hide();
-			$("span#guest_3").hide();
-			$("span#guest_4").hide();
-			$("span#guest_5").hide();
-			$("span#guest_limit").hide();
+			agCounter = 0; 
+			ags.forEach(function(x){x.hide();});
+			agButton.hide();
+			limit.hide();
+			var ags = [$("span#guest_1"), $("span#guest_2"), $("span#guest_3")]
 		}
 	});
 
-	// Add guest
-	$("button#add_guest_button.button-primary").click(function() {
-		if (guests == 6) {
-			$("span#guest_limit").show();
+	// add "Guest" field 
+	agButton.click(function() {
+		if (agCounter == 3) {
+			limit.show();
 		} else {
-			$("span#guest_"+guests).show();
-			guests += 1;
+			var element = ags.shift();
+			element.show();
+			agCounter += 1;
 		}
 	});
 });
 
+
 /* 
  Resize RSVP Form Fields based on device
 */
-
 
 $(document).ready(function(){
 	var form_name = $('#name')

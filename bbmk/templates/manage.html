@@ -30,23 +30,36 @@
         <!-- Content 
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="container">
-            <h1><b>Manage Wedding</b></h1>
             <br>
+            <h1><b>Manage Guests</b></h1>
+            <hr class="style-one"></hr>s
             <div class="row">
                 <div class="twelve columns">
                    <h4><b>Upload Guest List:</b></h4>
                     <form method="post" enctype=multipart/form-data action="{{ url_for('general.manage') }}">
-                        {{ form.csrf_token }} 
-                        {{ form.guests }}                        
+                        {{ form.csrf_token }}  
+                        {{ form.guests }}       
+                        &nbsp
+                        &nbsp
                         <button class="button-primary">Upload File</button>
                     </form>
+                    <span id="errors">
+                        {% if error != None %}
+                            <b>{{ error }}</b>
+                        {% endif %}
+                    </span>
+                    <span id="success">
+                        {% if success %}
+                            <b>SUCCESS! The new list was uploaded</b>
+                        {% endif %}
+                    </span>
                 </div>
                 </div>
                 <br>
+                <br>
+                <h4><b>RSVP-ed Guests:</b></h4>
                 <div class="row">
-                <h4><b>Responded Guests:</b></h4>
                 <div class="twelve columns" id='current_guests'>
-                    
                     <table class="u-full-width">
                         <thead>
                             <tr>
@@ -69,6 +82,9 @@
                             </tr>
                         {% endfor %}
                     </table>
+                    <form action="{{ url_for('general.download') }}"">
+                        <button class="button-primary">Download Current Guests</button>
+                    </form>
                  </div>
               </div>
             </div>

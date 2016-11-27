@@ -1,5 +1,5 @@
 """
-develop configuration -- for testing purposes
+TODO: add docstrings
 """
 import os
 
@@ -13,10 +13,9 @@ STATIC_IMAGES_PATH = os.path.join(_basedir, 'static/images')
 DEBUG = True
 
 # database info
-DATABASE_PATH = os.path.join(_basedir, 'storage/database.db')
+DATABASE_PATH = os.path.join(_basedir, 'storage/database.sqlite')
 DATABASE_SCHEMA = os.path.join(_basedir, 'storage/database.sql')
-DATABASE = {'name':DATABASE_PATH,
-            'engine':'peewee.SqliteDatabase'}
+DATABASE = {'name':DATABASE_PATH,'engine':'peewee.SqliteDatabase'}
 
 # basic auth defaults
 BASIC_AUTH_USERNAME = ''
@@ -25,7 +24,6 @@ BASIC_AUTH_PASSWORD = ''
 # upload file
 UPLOAD_FOLDER = os.path.join(_basedir, 'processing')
 ALLOWED_EXTENSIONS = set(['txt', 'xlsx', 'csv'])
-
 
 # config info 
 _config_info = {'root':_basedir,

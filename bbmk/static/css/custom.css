@@ -76,6 +76,11 @@ hr.style-one {
   max-width:100%;
 }
 
+ul {
+  list-style-type: None;
+
+}
+
 /* -------- RSVP ---------*/
 
 #errors {
@@ -100,6 +105,10 @@ hr.style-one {
   width:100%;
   overflow-y: auto;
   height:400px;
+}
+
+#success {
+    color:green;
 }
 
 
@@ -151,10 +160,6 @@ hr.style-one {
 
   /*------- HOME  -------*/
 
-  .emojis > img {
-    display:none;
-  }
-
   #welcome {
     background-image: url('/static/images/concrete_2.png');
     text-align:center;
@@ -173,6 +178,12 @@ hr.style-one {
   #welcome {
     background-image: url('/static/images/concrete_2.png');
   }
+
+  .emojis > img {
+    display:block
+    margin: 0 auto;
+  }
+
 
   /*----- NAVIGATION  -----*/
 

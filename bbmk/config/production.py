@@ -1,5 +1,5 @@
 """
-base production -- this should change once you push to production server
+TODO: add docstring
 """
 import os
 
@@ -13,10 +13,9 @@ STATIC_IMAGES_PATH = os.path.join(_basedir, 'static/images')
 DEBUG = True
 
 # database info
-DATABASE_PATH = os.path.join(_basedir, 'storage/database.db')
+DATABASE_PATH = os.path.join(_basedir, 'storage/database.sqlite')
 DATABASE_SCHEMA = os.path.join(_basedir, 'storage/database.sql')
-DATABASE = {'name':DATABASE_PATH,
-            'engine':'peewee.SqliteDatabase'}
+DATABASE = {'name':DATABASE_PATH,'engine':'peewee.SqliteDatabase'}
 
 # basic auth defaults
 BASIC_AUTH_USERNAME = ''
@@ -33,4 +32,5 @@ _config_info = {'root':_basedir,
                 'debug':DEBUG}
 
 del os
+
 

@@ -1,6 +1,5 @@
 """
-Put database models, functions and utilities here
-
+TODO: add docstring
 """
 import utils
 
@@ -14,7 +13,8 @@ class DatabaseModel(db.Model):
         database = db
 
 class guest(db.Model):
-    """Guest RSVP information 
+    """
+    TODO: add docstring 
     """
     rsvp_time = TextField(null=True)
     name = CharField(null=True, primary_key=True)
@@ -26,20 +26,9 @@ class guest(db.Model):
     class Meta:
         db_table = 'guest'
 
-class user(db.Model):
-    """Website User information
-    """
-    active = IntegerField()
-    admin = IntegerField()
-    email = CharField(unique=True)
-    password = CharField()
-    username = CharField(unique=True)
-    
-    class Meta:
-        db_table = 'user'
-
 class expected(db.Model):
-    """Names of guests on guest list
+    """
+    TODO: add docstring 
     """
     name = CharField(null=True, primary_key=True)
 

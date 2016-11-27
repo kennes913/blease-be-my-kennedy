@@ -1,17 +1,31 @@
+"""
+TODO: add module docstrings
+"""
+
 import bbmk.config
+import bbmk.app
 
 import os
 import subprocess
+import openpyxl
+import shutil
 
-from datetime import datetime 
+from datetime import datetime
 
-
-def load_config():
+def load_config(level=None):
 	""" Returns config based on presence of various 
 	configuration files. 
 
 	return :: app configuration module 
 	"""
+
+	if level == 'production':
+		return bbmk.config.production
+	if level == 'default':
+		return bbmk.config.default
+	if level == 'develop':
+		return bbmk.config.develop
+
 	try:
 		if bbmk.config.develop:
 			return bbmk.config.develop
@@ -25,10 +39,10 @@ def write_db_file(name):
 	"""Create a sqlite3 db file.
 	
 	:params name: str, name of database file 
-	
+
 	"""
 	config = load_config()
-	file = open(config._basedir+'/storage/{}.db'.format(name), 'w')
+	file = open(config._basedir+'/storage/{}.sqlite'.format(name), 'w')
 	file.close()
 	 
 
@@ -39,7 +53,7 @@ def remove_db_file(name):
 
 	"""
 	config = load_config()
-	os.remove(config._basedir+'/storage/{}.db'.format(name))
+	os.remove(config._basedir+'/storage/{}.sqlite'.format(name))
 
 
 def build_database(config):
@@ -56,69 +70,48 @@ def build_database(config):
 		print 'Created database file.'
 
 
-def create_admin_user(auth, user, password, email):
-	""" Create a user auth table if one does not exists. Then create
-	an Admin to edit site. 
-
-	:params auth: flask_pewee.auth.Auth object
-	:params user: str, set in environment's config
-	:params password: str, set in environment's config
-	
-	"""
-	auth.User.create_table(fail_silently=True)
-	try:
-		admin = auth.User(username=user, email=email, admin=True, active=True)
-		admin.set_password(password)
-		admin.save()
-		print 'Admin user {} created. Use secret key from config.'.format(user)
-	except:
-		print 'Admin user exists.'
-
-
-def process_RSVP_form(model, record):
-	""" This takes in RSVP form data submitted by user and processes
-	for import into database table. 
+def process_rsvp_form(model, form_data):
+	""" This takes in the data from the RSVP form, processes 
+	any additional guests, adds in the original record and 
+	pushes to sqlite database.
 
 	:params table: table class, table you want to insert data
-	:params record: dict, form data from users 
+	:params form_data: dict, form data from users 
 	
 	"""
-	records = []
-	
-	record['rsvp_time'] = datetime.strftime(datetime.now(), '%Y-%m-%d T %H:%M:%S')
-	record['guest_type'] = 'invited'
+	push_to_database = []
 
-	if record['events'] == 'Both':
-			record['ceremony'] = 'Yes'
-			record['reception'] = 'Yes'
-	if record['events'] == 'Ceremony':
-			record['ceremony'] = 'Yes'
-			record['reception'] = 'No'
-	if record['events'] == 'Reception':
-			record['ceremony'] = 'No'
-			record['reception'] = 'Yes'
+	form_data['rsvp_time'] = datetime.strftime(
+		datetime.now(), '%Y-%m-%d')
+	form_data['guest_type'] = 'invited'
 
-	for field in record:
-		if 'add_guest' in field:
-			if record[field]:
-				temp = {'name':record[field], 
-						'rsvp_time':record['rsvp_time'],
-						'email':record['email'],
+	if form_data['events'] == 'Both':
+			form_data['ceremony'] = 'Yes'
+			form_data['reception'] = 'Yes' 
+	if form_data['events'] == 'Ceremony':
+			form_data['ceremony'] = 'Yes'
+			form_data['reception'] = 'No'
+	if form_data['events'] == 'Reception':
+			form_data['ceremony'] = 'No'
+			form_data['reception'] = 'Yes'
+
+	for field in form_data:
+		if 'add' in field:
+			if form_data[field]:
+				temp = {'name':form_data[field], 
+						'rsvp_time':form_data['rsvp_time'],
+						'email':'None',
 						'guest_type':'additional',
-						'ceremony':record['ceremony'],
-						'reception':record['reception']}
-				records.append(temp)
+						'ceremony':form_data['ceremony'],
+						'reception':form_data['reception']}
+				push_to_database.append(temp)
 
-	del record['add_guest_1']
-	del record['add_guest_2']
-	del record['add_guest_3']
-	del record['add_guest_4']
-	del record['add_guest_5']
-	del record['guests']
-	del record['events']
+	for field in ('add_guest_1','add_guest_2',
+			'add_guest_3','guests','events'):
+		del form_data[field]
 
-	records.append(record)
-	model.insert_many(records, validate_fields=True).upsert(True).execute()
+	push_to_database.append(form_data)
+	model.insert_many(push_to_database, validate_fields=True).upsert(True).execute()
 
 
 def allowed_file(filename):
@@ -132,15 +125,16 @@ def allowed_file(filename):
 
 	return :: bool
 	"""
+
 	return '.' in filename and \
-		filename.rsplit('.', 1)[1] in bbmk.config.ALLOWED_EXTENSIONS
+		filename.rsplit('.', 1)[1] in bbmk.app.app_config.ALLOWED_EXTENSIONS
 
 
-def xls_guests_to_list(stream):
+def process_excel_upload(file):
 	""" This function parses an uploaded .xlsx or .xls file
 	containing expected guests.
 
-	:params stream: Bytes.IO object, uploaded guest list
+	:params name: Bytes.IO object, uploaded guest list
 	
 	return :: list, expected guest names
 	"""
@@ -149,29 +143,73 @@ def xls_guests_to_list(stream):
 	xls_upload = openpyxl.load_workbook(filename=file)
 	worksheet = xls_upload[xls_upload.get_sheet_names()[0]]
 
-	for row in worksheet.rows:
-		for cell in row:
-			if cell.value.lower() not in ['name', 'guest']:
-				store.append(dict(name=cell.value.lower()))
-	return store 
+	for column in worksheet.columns:
+		if not isinstance(column[0].value, unicode):
+			continue
+		if column[0].value.lower() in ['name', 'guest']:
+			for cell in column:
+				if cell.value.lower() not in ['name', 'guest']:
+					store.append(dict(name=cell.value.lower()))
+
+	if not store:
+		return False
+
+	return store
 
 
-def csv_guests_to_list(stream):
+def process_csv_upload(stream):
 	""" This function parses an uploaded .csv file
 	containing expected guests.
 
-	:params worksheet: openpyxl.workbook object, uploaded guest list
+	:params stream: openpyxl.workbook object, uploaded guest list
 	
 	return :: list, expected guest names
 	"""
 	store = []
-	
-	for item in stream.readlines():
-		if item.lower() not in ['name', 'guest']:
-			store.append(dict(name=str(item.replace('\r\n', ''))))
+	mem_copy = [[item.lower() for item in line.split(',')]
+		 		for line in stream.readlines()]
+
+	for title in ('name', 'guest', 'guest name'):
+		try:
+			index = mem_copy[0].index(title)
+			break
+		except ValueError:
+			continue
+	else:
+		return False
+
+	for line in mem_copy[1:]:
+		store.append(dict(name=str(line[index].replace('\r\n', ''))))
+
+	if not store:
+		return False
 
 	return store
-	
+
+
+def rsvp_guests_to_csv(model):
+	"""
+	TODO: add docstrings 
+	"""
+	headers = model._meta.sorted_field_names
+	csv = ",".join(headers)+'\n'
+
+	for record in model.select():
+		values = record._data
+		csv	+= ",".join([values[item] for item in headers])+'\n'
+
+	return csv 
+
+
+
+
+
+
+
+
+
+
+
 
 
 

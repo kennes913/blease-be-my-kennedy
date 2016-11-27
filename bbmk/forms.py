@@ -1,4 +1,6 @@
-
+"""
+TODO: add docstring
+"""
 from database import expected
 
 from wtforms import Form
@@ -7,10 +9,8 @@ from wtforms.validators import DataRequired, InputRequired
 from wtforms import StringField, SelectField, FileField
 
 class Bouncer:
-	""" A callable class used as a field validator 
-	for the name field in the RSVPForm class.
-
-	:params list: list, list of strings of guests
+	"""
+	TODO: add docstring 
 	"""
 	def __init__(self, guest_list=None):
 		if guest_list:
@@ -20,28 +20,34 @@ class Bouncer:
 
 	def __call__(self, form, field):
 		if str(field.data).lower() not in self.approved:
-			raise ValidationError('Dummy Error thrown.')
+			raise ValidationError('This name is now on the guest list.')
+
 
 class RSVPForm(Form):
-	""" An RSVP form for wedding guests.
 	"""
-	event_choices = [('', ''),
-					('Ceremony','Wedding at Chapel Dulcinea'), 
-					('Reception','Reception at Palm Door'),
-					('Both', 'Both')]					
-	additional_guest_choices = [('', ''),('Yes', 'Yes'), ('No', 'No')]
+	TODO: add docstring 
+	"""
+	placeholders = {'name':{"placeholder":"First and Last Name"},
+				    'email':{"placeholder":"email@domain.com"},
+				    'guests':{"placeholder":"Enter guest name"}}
+	events = [('', ''),
+			  ('Ceremony','Wedding at Chapel Dulcinea (3:30-4:30 P.M.)'), 
+			  ('Reception','Reception at Palm Door (5:00-11:00 P.M.)'),
+			  ('Both', 'Both')]					
+	guests = [('', ''),('Yes', 'Yes'),('No', 'No')]
 
-	name = StringField(u'Name', validators=[InputRequired(), Bouncer()], render_kw={"placeholder":"First and Last Name"})
-	email = StringField(u'What is your email address?', validators=[DataRequired(message="Did you input your email?")], render_kw={"placeholder":"email@domain.com"})
-	guests = SelectField(u'Are you bringing a guest?', choices=additional_guest_choices, validators=[DataRequired(message="Are you bringing a guest?")])
-	events = SelectField(u'What event(s) are you attending?', choices=event_choices, validators=[DataRequired(message="Please choose your events.")])
-	add_guest_1 = StringField(u'Additional Guest #1', default=None, render_kw={"placeholder":"Enter guest name"})
-	add_guest_2 = StringField(u'Additional Guest #2', default=None, render_kw={"placeholder":"Enter guest name"})
-	add_guest_3 = StringField(u'Additional Guest #3', default=None, render_kw={"placeholder":"Enter guest name"})
-	add_guest_4 = StringField(u'Additional Guest #4', default=None, render_kw={"placeholder":"Enter guest name"})
-	add_guest_5 = StringField(u'Additional Guest #5', default=None, render_kw={"placeholder":"Enter guest name"})
+	name = StringField('Name', validators=[InputRequired(), Bouncer()], render_kw=placeholders['name']) # Bouncer Validator not inserted for testing purposes
+	email = StringField('What is your email address?', validators=[DataRequired()], render_kw=placeholders['email'])
+	guests = SelectField('Are you bringing a guest?', choices=guests, validators=[DataRequired()])
+	events = SelectField('What event(s) are you attending?', choices=events, validators=[DataRequired()])
+	add_guest_1 = StringField('Guest #1', default=None, render_kw=placeholders['name'])
+	add_guest_2 = StringField('Guest #2', default=None, render_kw=placeholders['name'])
+	add_guest_3 = StringField('Guest #3', default=None, render_kw=placeholders['name'])
+
 
 class FileUploadForm(Form):
-	""" An RSVP form for wedding guests.
 	"""
-	guests = FileField('File:', validators=[InputRequired()], render_kw={"placeholder":"Add your csv or xlsx file here."})
+	TODO: add docstring 
+	"""
+	guests = FileField()	
+
