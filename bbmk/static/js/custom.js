@@ -45,6 +45,7 @@ $(document).ready(function() {
 	var agButton = $("button#add_guest_button.button-primary")
 	var limit = $("span#guest_limit")
 	var agCounter = 0
+	var guestField = $("select#guests.u-half-width")
 
 	// initial state
 	ags.forEach(function(x){x.hide();});
@@ -52,12 +53,12 @@ $(document).ready(function() {
 	agButton.hide();
 
 	// hide/show "Add Guest" Button
-	$("select#guests.u-half-width").change(function() {
+	guestField.change(function() {
 		if ($(this).val() == 'Yes') {
 			agButton.show();
 		} else {
-			var ags = [$("span#guest_1"), $("span#guest_2"), $("span#guest_3")]
-			agCounter = 0; 
+			ags = [$("span#guest_1"), $("span#guest_2"), $("span#guest_3")];
+			agCounter = 0;
 			ags.forEach(function(x){x.hide();});
 			agButton.hide();
 			limit.hide();
