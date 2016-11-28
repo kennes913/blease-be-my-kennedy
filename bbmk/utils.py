@@ -82,6 +82,7 @@ def process_rsvp_form(model, form_data):
 	"""
 	push_to_database = []
 
+	form_data['name'] = form_data['name'].strip()
 	form_data['rsvp_time'] = datetime.strftime(
 		datetime.now(), '%Y-%m-%d')
 	form_data['guest_type'] = 'invited'
@@ -99,7 +100,7 @@ def process_rsvp_form(model, form_data):
 	for field in form_data:
 		if 'add' in field:
 			if form_data[field]:
-				temp = {'name':form_data[field], 
+				temp = {'name':form_data[field].strip(), 
 						'rsvp_time':form_data['rsvp_time'],
 						'email':'None',
 						'guest_type':'additional',
