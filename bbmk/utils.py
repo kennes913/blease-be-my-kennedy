@@ -9,6 +9,7 @@ import os
 import subprocess
 import openpyxl
 import shutil
+import csv
 
 from datetime import datetime
 
@@ -166,8 +167,7 @@ def process_csv_upload(stream):
 	return :: list, expected guest names
 	"""
 	store = []
-	mem_copy = [[item.lower() for item in line.split(',')]
-		 		for line in stream.readlines()]
+	mem_copy = [row for row in csv.reader(stream.readlines())]
 
 	for title in ('name', 'guest', 'guest name'):
 		try:
