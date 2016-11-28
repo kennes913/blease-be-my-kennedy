@@ -16,12 +16,12 @@ class Bouncer:
 	"""
 	def __init__(self, guest_list=None):
 		if guest_list:
-			self.approved = [guest.lower() for guest in guest_list]
+			self.approved = [guest.lower().strip() for guest in guest_list]
 		else:
-			self.approved = [guest.name.lower() for guest in expected.select()]
+			self.approved = [guest.name.lower().strip() for guest in expected.select()]
 
 	def __call__(self, form, field):
-		if str(field.data).lower() not in self.approved:
+		if str(field.data).lower().strip() not in self.approved:
 			raise ValidationError('Does not exist on the invited list.')
 
 
