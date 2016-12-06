@@ -19,7 +19,6 @@ def load_config(level=None):
 
 	return :: app configuration module 
 	"""
-
 	if level == 'production':
 		return bbmk.config.production
 	if level == 'default':
@@ -88,14 +87,19 @@ def process_rsvp_form(model, form_data):
 	form_data['guest_type'] = 'invited'
 
 	if form_data['events'] == 'Both':
-			form_data['ceremony'] = 'Yes'
-			form_data['reception'] = 'Yes' 
+		form_data['ceremony'] = 'Yes'
+		form_data['reception'] = 'Yes'
+	if form_data['events'] == 'Not Attending':
+		form_data['ceremony'] = 'No'
+		form_data['reception'] = 'No'
+		if not form_data['email']:
+			form_data['email'] = 'Email not entered.'
 	if form_data['events'] == 'Ceremony':
-			form_data['ceremony'] = 'Yes'
-			form_data['reception'] = 'No'
+		form_data['ceremony'] = 'Yes'
+		form_data['reception'] = 'No'
 	if form_data['events'] == 'Reception':
-			form_data['ceremony'] = 'No'
-			form_data['reception'] = 'Yes'
+		form_data['ceremony'] = 'No'
+		form_data['reception'] = 'Yes'
 
 	for field in form_data:
 		if 'add' in field:

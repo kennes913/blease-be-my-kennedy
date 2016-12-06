@@ -58,6 +58,9 @@ def rsvp():
 	if request.method == 'POST':
 		form = RSVPForm(request.form)
 		data = form.data
+		if data.get('events') == 'Not Attending':
+			utils.process_rsvp_form(guest, form.data)
+			return redirect(url_for('general.thanks'))
 		if data.get('guests') == 'Yes':
 			if data.get('name') and not any([data.get('add_guest_1'), \
 				data.get('add_guest_2'), data.get('add_guest_3')]):
@@ -74,6 +77,14 @@ def success():
 
 	if request.referrer:
 		return render_template('success.html')
+	else:
+		return render_template('404.html')
+
+@views.route('/thanks')
+def thanks():
+
+	if request.referrer:
+		return render_template('thanks.html')
 	else:
 		return render_template('404.html')
 
