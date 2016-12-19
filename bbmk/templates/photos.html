@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+    Photos
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="eight columns offset-by-two" id=photo-collage>
+            <br>
+            <h1><b>Photos</b></h1>
+            <hr class="style-one"></hr>
+            <div class="container" id="desktop-photos" style="text-align:center;">
+                <img src="{{ url_for('static', filename='images/skab-horizontal-1.jpg') }}" style="max-width: 49.5%"/>
+                <img src="{{ url_for('static', filename='images/skab-horizontal-2.jpg') }}" style="max-width: 49.5%"/>
+                <img src="{{ url_for('static', filename='images/skab-vertical-2.jpg') }}" style="max-width: 32.5%"/>
+                <img src="{{ url_for('static', filename='images/skab-vertical-1.jpg') }}" style="max-width: 32.5%"/>
+                <img src="{{ url_for('static', filename='images/skab-vertical-3.jpg') }}" style="max-width: 32.5%"/>
+            </div>
+            <div class="container" id="phablet-photos" style="text-align:center;">
+                <img src="{{ url_for('static', filename='images/skab-horizontal-1.jpg') }}" style="max-width: 100%"/>
+                <img src="{{ url_for('static', filename='images/skab-horizontal-2.jpg') }}" style="max-width: 100%"/>  
+                <img src="{{ url_for('static', filename='images/skab-vertical-2.jpg') }}" style="max-width: 100%"/>
+                <img src="{{ url_for('static', filename='images/skab-vertical-1.jpg') }}" style="max-width: 100%"/>
+                <img src="{{ url_for('static', filename='images/skab-vertical-3.jpg') }}" style="max-width: 100%"/>
+            </div>
+        </div>
+    </div>
+{% endblock %}

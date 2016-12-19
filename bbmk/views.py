@@ -39,7 +39,7 @@ def ceremony():
 
 @views.route('/reception')
 def reception():
-	
+
 	return render_template('reception.html')
 
 
@@ -48,10 +48,13 @@ def story():
 
 	return render_template('story.html')
 
+@views.route('/photos')
+def photos():
 
+	return render_template('photos.html')
+	
 @views.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
-
 	if request.method == 'GET':
 		errors = request.args.get('errors')
 		return render_template('rsvp.html',form=RSVPForm(), errors=errors)

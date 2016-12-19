@@ -34,9 +34,7 @@ $(document).ready(function() {
 });
 
 
-/*
- RSVP Form Add Guest Functionality
-*/
+//RSVP Form Add Guest Functionality
 
 $(document).ready(function() {
 	
@@ -78,9 +76,7 @@ $(document).ready(function() {
 });
 
 
-/* 
- Resize RSVP Form Fields based on device
-*/
+// Resize RSVP Form Fields based on device
 
 $(document).ready(function(){
 	var form_name = $('#name')
@@ -95,6 +91,7 @@ $(document).ready(function(){
 		form_guests.css('width', '100%');
 	};
 });
+
 
 
 
