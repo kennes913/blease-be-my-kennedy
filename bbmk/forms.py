@@ -34,19 +34,19 @@ class RSVPForm(Form):
 	add_guest_2 = StringField('Guest #2', default=None, render_kw=placeholders['name'])
 	add_guest_3 = StringField('Guest #3', default=None, render_kw=placeholders['name'])
 
-	def validate_name(form, field):
-		""" This is an inline validator comparing the 
-		RSVPer name against a list of invited guests.
-		"""
-		guest_list = [str(guest.name.lower().strip()) for guest in expected.select()]
-		name = str(field.data.lower().strip()) 
-		match = re.compile(" +").findall(name) 
+	#def validate_name(form, field):
+		#""" This is an inline validator comparing the 
+		#RSVPer name against a list of invited guests.
+		#"""
+		#guest_list = [str(guest.name.lower().strip()) for guest in expected.select()]
+		#name = str(field.data.lower().strip()) 
+		#match = re.compile(" +").findall(name) 
 
-		if match:
-			name = name.replace(match[0], ' ')
+		#if match:
+			#name = name.replace(match[0], ' ')
 
-		if name not in guest_list:
-			raise ValidationError('Does not exist on the invited list.')
+		#if name not in guest_list:
+			#raise ValidationError('Does not exist on the invited list.')
 
 
 class FileUploadForm(Form):
