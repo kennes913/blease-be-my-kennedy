@@ -12,6 +12,8 @@ import shutil
 import csv
 
 from datetime import datetime
+from twilio.rest import TwilioRestClient 
+
 
 def load_config(level=None):
 	""" Returns config based on presence of various 
@@ -209,17 +211,28 @@ def rsvp_guests_to_csv(model):
 
 	return csv 
 
+def send_rsvp_sms(**kwargs):
+	"""
+	""" 
+	account = kwargs.get('account') 
+	token = kwargs.get('token') 
+	recipients = kwargs.get('recipients') 
+	_from = kwargs.get('twilio_number')
+	data = kwargs.get('data')
 
+	client = TwilioRestClient(account, token)
 
+	if isinstance(recipients, list):
+		for number in recipients:
+			client.messages.create(
+				to=number, 
+    			from_=_from, 
+    			body=data)
+	elif isinstance(recipients, str):
+		client.messages.create(to=recipients, from_=_from, body=data)
+	else:
+		return False
 
-
-
-
-
-
-
-
-
-
+	return True
 
 

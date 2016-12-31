@@ -21,6 +21,12 @@ DATABASE = {'name':DATABASE_PATH,'engine':'peewee.SqliteDatabase'}
 BASIC_AUTH_USERNAME = ''
 BASIC_AUTH_PASSWORD = ''
 
+# twilio 
+ACCOUNT_SID = "" 
+AUTH_TOKEN = ""
+PHONE = ""
+RECIPIENTS = []
+
 # upload file
 UPLOAD_FOLDER = os.path.join(_basedir, 'processing')
 ALLOWED_EXTENSIONS = set(['txt', 'xlsx', 'csv'])

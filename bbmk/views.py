@@ -4,9 +4,9 @@ flask app.
 """
 import os
 import csv 
+import json
 import openpyxl
 
-from utils import allowed_file, rsvp_guests_to_csv
 from app import db, app_config, utils, basic_auth
 from werkzeug.utils import secure_filename
 from forms import RSVPForm, FileUploadForm
@@ -62,6 +62,14 @@ def rsvp():
 		form = RSVPForm(request.form)
 		data = form.data
 		if data.get('events') == 'Not Attending':
+			message = ("{name} just RSVP'ed. "
+					   "He/She is not coming.").format(name=data.get('name'))
+			utils.send_rsvp_sms(
+				account=app_config.ACCOUNT_SID, 
+				token=app_config.AUTH_TOKEN,
+				twilio_number=app_config.PHONE,
+				recipients=app_config.RECIPIENTS,
+				data=message)
 			utils.process_rsvp_form(guest, form.data)
 			return redirect(url_for('general.thanks'))
 		if data.get('guests') == 'Yes':
@@ -69,6 +77,14 @@ def rsvp():
 				data.get('add_guest_2'), data.get('add_guest_3')]):
 				return render_template('rsvp.html', form=RSVPForm(), errors=['DummyError'])
 		if form.validate():
+			message = ("{name} just RSVP'ed. "
+					   "He/She is coming.").format(name=data.get('name'))
+			utils.send_rsvp_sms(
+				account=app_config.ACCOUNT_SID, 
+				token=app_config.AUTH_TOKEN,
+				twilio_number=app_config.PHONE,
+				recipients=app_config.RECIPIENTS,
+				data=message)
 			utils.process_rsvp_form(guest, form.data) 
 			return redirect(url_for('general.success'))
 		else:
@@ -110,7 +126,7 @@ def manage():
 			return render_template('manage.html',
 				form=FileUploadForm(), guests=current_guests, error=bad_file_name)
 
-		if file and allowed_file(file.filename):
+		if file and utils.allowed_file(file.filename):
 
 			filename = secure_filename(file.filename)
 
@@ -140,7 +156,7 @@ def manage():
 @views.route('/download')
 def download():
 	
-	csv = rsvp_guests_to_csv(guest)
+	csv = utils.rsvp_guests_to_csv(guest)
 	response = make_response(csv)
 	
 	content_disposition = "attachment; filename=rsvp_guests.csv"
